@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ReserveRouteImport } from './routes/reserve'
+import { Route as DrinkEatRouteImport } from './routes/drink-eat'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ReserveRoute = ReserveRouteImport.update({
   id: '/reserve',
   path: '/reserve',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DrinkEatRoute = DrinkEatRouteImport.update({
+  id: '/drink-eat',
+  path: '/drink-eat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminRoute = AdminRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/drink-eat': typeof DrinkEatRoute
   '/reserve': typeof ReserveRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/drink-eat': typeof DrinkEatRoute
   '/reserve': typeof ReserveRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
+  '/drink-eat': typeof DrinkEatRoute
   '/reserve': typeof ReserveRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/reserve'
+  fullPaths: '/' | '/admin' | '/drink-eat' | '/reserve'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin' | '/reserve'
-  id: '__root__' | '/' | '/admin' | '/reserve'
+  to: '/' | '/admin' | '/drink-eat' | '/reserve'
+  id: '__root__' | '/' | '/admin' | '/drink-eat' | '/reserve'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
+  DrinkEatRoute: typeof DrinkEatRoute
   ReserveRoute: typeof ReserveRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/reserve'
       fullPath: '/reserve'
       preLoaderRoute: typeof ReserveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/drink-eat': {
+      id: '/drink-eat'
+      path: '/drink-eat'
+      fullPath: '/drink-eat'
+      preLoaderRoute: typeof DrinkEatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
+  DrinkEatRoute: DrinkEatRoute,
   ReserveRoute: ReserveRoute,
 }
 export const routeTree = rootRouteImport

@@ -32,7 +32,7 @@ export const Route = createFileRoute("/")({
 
 const navLinks = [
   { label: "About", href: "#" },
-  { label: "Drink/Eat", href: "#" },
+  { label: "Drink/Eat", href: "/drink-eat", isRoute: true },
   { label: "Reserve", href: "/reserve", isRoute: true },
 ];
 
