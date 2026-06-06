@@ -46,12 +46,12 @@ function Reserve() {
     if (!name.trim() || !email.trim() || !phone.trim() || !date) return;
     setSaving(true);
     setError(null);
-    const { error: err } = await supabase.from("reservations").insert({
-      venue, guests, reservation_time: time, reservation_date: date,
-      name: name.trim(), email: email.trim(), phone: phone.trim(),
-      occasion: occasion || null, notes: notes || null,
-      bar_section: venue === "bar" ? barSection : null,
-    });
+const { error: err } = await supabase.from("reservations").insert({
+  venue, guests, reservation_time: time, reservation_date: date,
+  name: name.trim(), email: email.trim(), phone: phone.trim(),
+  occasion: occasion || null, notes: notes || null,
+  bar_section: venue === "bar" ? barSection : null,
+} as any);
     setSaving(false);
     if (err) { setError(err.message || "Could not save. Please try again."); return; }
     setSubmitted(true);
