@@ -17,6 +17,7 @@ import footerImg from '../assets/heyou/Footer.svg'
 import logoImg from '../assets/heyou/logo.svg'
 import moodsImg from '../assets/heyou/moods.svg'
 import bookImg from '../assets/heyou/book.svg'
+import { Footer } from '@/components/Footer'
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,6 +33,7 @@ export const Route = createFileRoute("/")({
 
 const navLinks = [
   { label: "About", href: "#" },
+    { label: "Home", href: "/home", isRoute: true },
   { label: "Drink/Eat", href: "/drink-eat", isRoute: true },
   { label: "Reserve", href: "/reserve", isRoute: true },
 ];
@@ -188,9 +190,11 @@ function Index() {
       </section>
 
       {/* FOOTER */}
-      <footer>
+      <Footer />
+
+      {/* <footer>
         <img src={footerImg} alt="Footer" className="w-full h-auto" />
-      </footer>
+      </footer> */}
 
     </main>
   );

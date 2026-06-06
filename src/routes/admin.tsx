@@ -14,7 +14,7 @@ export const Route = createFileRoute("/admin")({
 
 const ADMIN_USERNAME = "admin";
 const ADMIN_PASSWORD = "Admin@123456";
-const ADMIN_EMAIL = "admin@heyou.local";
+const ADMIN_EMAIL = "mdtanveer22@gmail.com";
 
 type Reservation = {
   id: string;
