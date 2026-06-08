@@ -83,7 +83,7 @@ function DrinkEat() {
     </div>
   </div>
 </Reveal>
-        {/* mobile text below image */}
+        {/* mobile text below image
         <div className="md:hidden bg-[var(--hey-yellow)] px-5 py-4 space-y-1 text-black text-sm font-medium" style={{ fontFamily: "'Londrina Solid', sans-serif" }}>
           <p>The food at Heyou is built around rounds and tables.</p>
           <p>Start light. Order something with the next drink.</p>
@@ -92,7 +92,7 @@ function DrinkEat() {
           <p>Stay long enough and the table becomes dinner.</p>
           <p>This is not food built as an afterthought to the bar.</p>
           <p>It is a full food program for the way people actually go out together.</p>
-        </div>
+        </div> */}
 
         {/* RIGHT — bar sides */}
         <Reveal variant="right" className="relative bg-[var(--hey-red)] flex flex-col items-center justify-center min-h-[300px] md:min-h-[580px] p-6 md:p-8">
