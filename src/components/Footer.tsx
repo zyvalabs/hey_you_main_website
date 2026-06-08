@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import logoImg from '../assets/heyou/red logo.svg'
 
 export function Footer() {
   return (
@@ -16,12 +15,8 @@ export function Footer() {
           </p>
         </div>
 
-        {/* CENTER — logo */}
-        <div className="flex flex-col items-start md:items-center gap-3">
-          <Link to="/home">
-            <img src={logoImg} alt="Heyou" className="h-10 md:h-12 w-auto hover:scale-105 transition-transform duration-300" />
-          </Link>
-        </div>
+        {/* CENTER — empty, keeps layout balanced */}
+        <div className="hidden md:block" />
 
         {/* RIGHT — Social + Location */}
         <div className="flex flex-col items-start gap-4">
