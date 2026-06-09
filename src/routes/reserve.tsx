@@ -7,7 +7,6 @@ import { VenuePicker } from "../components/VenuePicker";
 import { ReservationForm } from "../components/ReservationForm";
 import { ReservationConfirmation } from "../components/ReservationConfirmation";
 
-
 export const Route = createFileRoute("/reserve")({
   validateSearch: (search: Record<string, unknown>) => ({
     venue: (search.venue as string) || null,
@@ -54,25 +53,40 @@ function Reserve() {
     if (!name.trim() || !email.trim() || !phone.trim() || !date || !time || !guests) return;
     setSaving(true);
     setError(null);
+
     const { error: err } = await supabase.from("reservations").insert({
       venue, guests, reservation_time: time, reservation_date: date,
       name: name.trim(), email: email.trim(), phone: phone.trim(),
       occasion: occasion || null, notes: notes || null,
       bar_section: (venue === "bar" ? barSection : null) as string | null,
     } as any);
-setSaving(false);
-if (err) { setError(err.message || "Could not save. Please try again."); return; }
 
-await fetch("https://mtwvsobgsxvjmoqjgpkr.supabase.co/functions/v1/send-reservation-email", {
-  method: "POST",
-  headers: { 
-    "Content-Type": "application/json",
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10d3Zzb2Jnc3h2am1vcWpncGtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3Mjg4MzYsImV4cCI6MjA5NjMwNDgzNn0.tiP2bM3xgznWt-B0RZa3FsBOQskD1whSILjCyn0I9m4",
-  },
-  body: JSON.stringify({ name, email, phone, venue, guests, date, time, occasion, notes, bar_section: venue === "bar" ? barSection : null }),
-});
+    setSaving(false);
+    if (err) { setError(err.message || "Could not save. Please try again."); return; }
 
-setSubmitted(true);
+    // SEND EMAIL
+    try {
+      console.log("Sending email...");
+      const payload = { name, email, phone, venue, guests, date, time, occasion, notes, bar_section: venue === "bar" ? barSection : null };
+      console.log("Payload:", JSON.stringify(payload));
+
+      const res = await fetch("https://mtwvsobgsxvjmoqjgpkr.supabase.co/functions/v1/send-reservation-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10d3Zzb2Jnc3h2am1vcWpncGtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3Mjg4MzYsImV4cCI6MjA5NjMwNDgzNn0.tiP2bM3xgznWt-B0RZa3FsBOQskD1whSILjCyn0I9m4",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      console.log("Email response status:", res.status);
+      const data = await res.json();
+      console.log("Email response data:", data);
+    } catch (emailErr) {
+      console.error("Email fetch error:", emailErr);
+    }
+
+    setSubmitted(true);
     if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -112,7 +126,7 @@ setSubmitted(true);
           onSubmit={onSubmit}
         />
       </div>
-<Footer />
+      <Footer />
       <BottomNav />
     </main>
   );
