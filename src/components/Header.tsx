@@ -3,7 +3,7 @@ import { useState } from "react";
 import logoImg from '../assets/heyou/logo.svg'
 
 const navLinks = [
-  { label: "Home", href: "/home" },
+  { label: "About", href: "/home" },
   { label: "Drink/Eat", href: "/drink-eat" },
   { label: "Reserve", href: "/reserve" },
 ];
