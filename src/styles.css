@@ -145,7 +145,7 @@
   }
 
   body {
-    background-color: var(--hey-red);
+    background-color: var(--hey-black);
     color: var(--hey-cream);
     font-family: var(--font-body);
     font-weight: 500;
