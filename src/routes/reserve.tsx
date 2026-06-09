@@ -65,7 +65,10 @@ if (err) { setError(err.message || "Could not save. Please try again."); return;
 
 await fetch("https://mtwvsobgsxvjmoqjgpkr.supabase.co/functions/v1/send-reservation-email", {
   method: "POST",
-  headers: { "Content-Type": "application/json" },
+  headers: { 
+    "Content-Type": "application/json",
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10d3Zzb2Jnc3h2am1vcWpncGtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3Mjg4MzYsImV4cCI6MjA5NjMwNDgzNn0.tiP2bM3xgznWt-B0RZa3FsBOQskD1whSILjCyn0I9m4",
+  },
   body: JSON.stringify({ name, email, phone, venue, guests, date, time, occasion, notes, bar_section: venue === "bar" ? barSection : null }),
 });
 
