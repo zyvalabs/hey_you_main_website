@@ -60,9 +60,16 @@ function Reserve() {
       occasion: occasion || null, notes: notes || null,
       bar_section: (venue === "bar" ? barSection : null) as string | null,
     } as any);
-    setSaving(false);
-    if (err) { setError(err.message || "Could not save. Please try again."); return; }
-    setSubmitted(true);
+setSaving(false);
+if (err) { setError(err.message || "Could not save. Please try again."); return; }
+
+await fetch("https://mtwvsobgsxvjmoqjgpkr.supabase.co/functions/v1/send-reservation-email", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ name, email, phone, venue, guests, date, time, occasion, notes, bar_section: venue === "bar" ? barSection : null }),
+});
+
+setSubmitted(true);
     if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
