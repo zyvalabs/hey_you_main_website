@@ -1,7 +1,7 @@
 export function AnimToggle() {
   return (
     <a
-      href="https://wa.me/919108906554"
+      href="https://wa.me/919108167707"
       target="_blank"
       rel="noopener noreferrer"
       title="Chat on WhatsApp"
