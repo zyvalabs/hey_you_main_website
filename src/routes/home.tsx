@@ -3,7 +3,7 @@ import { Header, BottomNav } from "@/components/Header";
 import staySvg from '../assets/heyou/stay.svg'
 import heyYouSvg from '../assets/heyou/hey_you.svg'
 import welcomeImg from '../assets/heyou/welcome.png'
-import footerSvg from '../assets/heyou/footer.svg'
+import footerSvg from '../assets/heyou/Footer.svg'
 
 export const Route = createFileRoute("/home")({
   head: () => ({

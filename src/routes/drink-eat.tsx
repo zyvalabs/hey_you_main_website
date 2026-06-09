@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header, BottomNav } from "@/components/Header";
 import drinkEatStaySvg from '../assets/heyou/drinkeatstay.png'
 import barSide from '../assets/heyou/bar side@2x.png'
-import footerSvg from '../assets/heyou/footer.svg'
+import footerSvg from '../assets/heyou/Footer.svg'
 
 
 
