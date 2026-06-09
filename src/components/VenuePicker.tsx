@@ -30,16 +30,24 @@ export function VenuePicker({ venue, venueError, barSection, onVenueSelect, onBa
             <img src={heyouBarSvg} alt="Heyou Bar" style={{ width: '100%', height: 'auto', display: 'block' }} />
             <div className={`w-4 h-4 rounded-full border-2 border-black self-end transition-all duration-200 ${venue === "bar" ? "bg-black" : "bg-transparent"}`} />
             {venue === "bar" && (
-              <div className="flex gap-2 mt-1">
-                <button type="button" onClick={(e) => { e.stopPropagation(); onBarSectionSelect("indoor"); }}
-                  className={`flex-1 py-1 text-xs font-bold border-2 border-black transition-all duration-200 ${barSection === "indoor" ? "bg-black text-[var(--hey-cream)]" : "bg-white text-black"}`}>
-                  Indoor
-                </button>
-                <button type="button" onClick={(e) => { e.stopPropagation(); onBarSectionSelect("outdoor"); }}
-                  className={`flex-1 py-1 text-xs font-bold border-2 border-black transition-all duration-200 ${barSection === "outdoor" ? "bg-black text-[var(--hey-cream)]" : "bg-white text-black"}`}>
-                  Outdoor
-                </button>
-              </div>
+          <div className="flex gap-2 mt-1">
+  <button type="button" onClick={(e) => { e.stopPropagation(); onBarSectionSelect("indoor"); }}
+    className={`py-1 text-xs font-bold border-2 border-black transition-all duration-200 ${
+      barSection === "indoor"
+        ? "flex-[2] py-2 text-sm bg-black text-[var(--hey-cream)] scale-105 shadow-[3px_3px_0_#555]"
+        : "flex-1 py-1 text-xs bg-white text-black opacity-50 scale-95"
+    }`}>
+    Indoor
+  </button>
+  <button type="button" onClick={(e) => { e.stopPropagation(); onBarSectionSelect("outdoor"); }}
+    className={`py-1 text-xs font-bold border-2 border-black transition-all duration-200 ${
+      barSection === "outdoor"
+        ? "flex-[2] py-2 text-sm bg-black text-[var(--hey-cream)] scale-105 shadow-[3px_3px_0_#555]"
+        : "flex-1 py-1 text-xs bg-white text-black opacity-50 scale-95"
+    }`}>
+    Outdoor
+  </button>
+</div>
             )}
           </div>
         </button>
@@ -55,10 +63,10 @@ export function VenuePicker({ venue, venueError, barSection, onVenueSelect, onBa
       </div>
 
       {/* HAND GLASS DIVIDER */}
-      <div className="block absolute left-[40%] top-0 translate-x-0 z-10 flex items-start justify-center" style={{ pointerEvents: 'none' }}>
-        <img src={handGlassSvg} alt="" className="hidden md:block" style={{ height: '300px', width: 'auto' }} />
-        <img src={handGlassSvg} alt="" className="block md:hidden" style={{ height: '100px', width: 'auto', marginTop: '410px', marginLeft: '90px' }} />
-      </div>
+    {/* HAND GLASS DIVIDER */}
+<div className="block absolute left-[40%] top-0 translate-x-0 z-10 flex items-start justify-center" style={{ pointerEvents: 'none' }}>
+  <img src={handGlassSvg} alt="" className="hidden md:block w-auto" style={{ height: 'clamp(100px, 15vw, 300px)' }} />
+</div>
     </div>
   );
 }

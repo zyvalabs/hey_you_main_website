@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AnimToggle } from "../components/AnimToggle";
+import { PageLoader } from "@/components/PageLoader";
 
 function NotFoundComponent() {
   return (
@@ -136,8 +137,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <PageLoader>
+        <Outlet />
+      </PageLoader>
       <AnimToggle />
     </QueryClientProvider>
   );

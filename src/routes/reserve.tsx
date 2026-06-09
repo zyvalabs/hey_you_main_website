@@ -7,6 +7,7 @@ import { VenuePicker } from "../components/VenuePicker";
 import { ReservationForm } from "../components/ReservationForm";
 import { ReservationConfirmation } from "../components/ReservationConfirmation";
 
+
 export const Route = createFileRoute("/reserve")({
   validateSearch: (search: Record<string, unknown>) => ({
     venue: (search.venue as string) || null,
@@ -101,7 +102,7 @@ function Reserve() {
           onSubmit={onSubmit}
         />
       </div>
-      {/* <Footer /> */}
+<Footer />
       <BottomNav />
     </main>
   );

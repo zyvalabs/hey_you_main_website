@@ -55,8 +55,21 @@ export function Footer() {
               <span className="text-[10px] text-[var(--hey-cream)]/60">Locate us</span>
               <span className="text-xs md:text-sm font-bold text-[var(--hey-yellow)] group-hover:underline">No. 18 Ramanashree, MG Road,<br/>Ashok Nagar, Bangalore</span>
             </div>
+            
           </a>
+          {/* Phone */}
+<div className="flex items-center gap-3">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[var(--hey-yellow)] flex-shrink-0">
+    <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" stroke="currentColor" strokeWidth="2" fill="none"/>
+  </svg>
+  <div className="flex flex-col text-left">
+    <span className="text-[10px] text-[var(--hey-cream)]/60">Call us</span>
+    <span className="text-xs md:text-sm text-[var(--hey-yellow)]">080 4725 0000</span>
+    <span className="text-xs md:text-sm text-[var(--hey-yellow)]">89040 85004</span>
+  </div>
+</div>
         </div>
+        
       </div>
 
       {/* BOTTOM BAR */}

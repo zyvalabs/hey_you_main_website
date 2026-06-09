@@ -1,10 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header, BottomNav } from "@/components/Header";
 import drinkEatStaySvg from '../assets/heyou/drinkeatstay.png'
-import barSide from '../assets/heyou/bar side@2x.png'
-import footerSvg from '../assets/heyou/Footer.svg'
-
-
+import barSide from '../assets/heyou/reserve table button.svg'
+import { Footer } from "@/components/Footer";
+import { Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/drink-eat")({
   head: () => ({
@@ -21,8 +20,12 @@ function DrinkEat() {
     <div className="bg-[var(--hey-black)]">
       <Header active="/drink-eat" />
       <img src={drinkEatStaySvg} alt="Drink Eat Stay" style={{ width: '100%', height: 'auto', display: 'block', margin: 0, padding: 0 }} />
-      <img src={barSide} alt="Bar Side" style={{ width: '100%', height: 'auto', display: 'block', margin: 0, padding: 0 }} />
-      <img src={footerSvg} alt="Footer" style={{ width: '100%', height: 'auto', display: 'block', margin: 0, padding: 0 }} />
+
+<Link to="/reserve">
+  <img src={barSide} alt="Bar Side" style={{ width: '100%', height: 'auto', display: 'block', margin: 0, padding: 0 }} />
+</Link>
+
+<Footer />
       <BottomNav />
     </div>
   );
