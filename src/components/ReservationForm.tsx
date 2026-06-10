@@ -1,11 +1,12 @@
 import handGlass1Svg from '../assets/heyou/hand glass1.svg'
 
 const TIMES = [
+  "11:30am",
   "12:00pm","12:30pm","01:00pm","01:30pm","02:00pm","02:30pm","03:00pm","03:30pm",
   "04:00pm","04:30pm","05:00pm","05:30pm","06:00pm","06:30pm","07:00pm","07:30pm",
-  "08:00pm","08:30pm","09:00pm","09:30pm","10:00pm","10:30pm","11:00pm",
+  "08:00pm","08:30pm","09:00pm","09:30pm","10:00pm","10:30pm","11:00pm","11:30pm",
 ];
-const GUESTS = ["1","2","3","4","5","6","7","8","9+"];
+const GUESTS = ["1","2","3","4","5","6","7","8","9+","Group of 10+","Group of 25+","Corporate Party","Party Group"];
 
 interface Props {
   name: string; setName: (v: string) => void;
@@ -25,8 +26,9 @@ interface Props {
 export function ReservationForm({ name, setName, email, setEmail, phone, setPhone, guests, setGuests, date, setDate, time, setTime, occasion, setOccasion, notes, setNotes, allFilled, saving, error, onSubmit }: Props) {
   return (
     <div className="md:w-3/5 bg-[var(--hey-red)] flex flex-col justify-center px-6 py-8 md:px-10 md:py-12">
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap');`}</style>
       <form onSubmit={onSubmit} className="space-y-4 w-full max-w-lg mx-auto">
-        <h2 className="font-display text-[var(--hey-cream)] text-2xl md:text-3xl mb-2">Your Details</h2>
+        <h2 className="text-[var(--hey-cream)] text-2xl md:text-3xl mb-2" style={{ fontFamily: "'Londrina Solid', cursive" }}>Your Details</h2>
 
         <div className="grid grid-cols-2 gap-3">
           <Field label="Name" required>
@@ -80,7 +82,7 @@ export function ReservationForm({ name, setName, email, setEmail, phone, setPhon
 
         {allFilled && (
           <div className="bg-[var(--hey-black)] border-2 border-white/20 p-4 text-xs text-[var(--hey-cream)] space-y-1.5 transition-all duration-300">
-            <p className="font-display text-sm text-[var(--hey-yellow)] mb-2">Good to Know</p>
+            <p className="text-sm text-[var(--hey-yellow)] mb-2" style={{ fontFamily: "'Londrina Solid', cursive" }}>Good to Know</p>
             <p>· Heyou Bar entry is 21 and over.</p>
             <p>· Heyou is non-smoking indoors.</p>
             <p>· Tell us about allergies or celebrations while booking.</p>
@@ -91,15 +93,16 @@ export function ReservationForm({ name, setName, email, setEmail, phone, setPhon
         <div className="relative">
           <div className="pr-0 space-y-3">
             <button type="submit" disabled={saving}
-              className="w-full font-display bg-[var(--hey-yellow)] text-black px-8 py-4 rounded-full text-lg hover:bg-[var(--hey-cream)] transition-all duration-300 shadow-[6px_6px_0_#000] border-2 border-black disabled:opacity-60 hover:-translate-y-0.5 transform">
+              className="w-full bg-[var(--hey-yellow)] text-black px-8 py-4 rounded-full text-lg hover:bg-[var(--hey-cream)] transition-all duration-300 shadow-[6px_6px_0_#000] border-2 border-black disabled:opacity-60 hover:-translate-y-0.5 transform"
+              style={{ fontFamily: "'Londrina Solid', cursive" }}>
               {saving ? "SAVING…" : "CONFIRM RESERVATION"}
             </button>
             <p className="text-xs text-[var(--hey-cream)]/60"><span className="text-[var(--hey-cream)]">*</span> Required fields</p>
             {error && <p className="text-center text-[var(--hey-yellow)] font-bold text-sm">{error}</p>}
           </div>
-<div className="absolute -right-80 top-30 bottom-0 flex items-center" style={{ pointerEvents: 'none' }}>
-  <img src={handGlass1Svg} alt="" style={{ height: '600px', width: 'auto', marginRight: '-40px', marginTop: '-400px' }} />
-</div>
+          <div className="absolute -right-80 top-30 bottom-0 flex items-center" style={{ pointerEvents: 'none' }}>
+            <img src={handGlass1Svg} alt="" style={{ height: '600px', width: 'auto', marginRight: '-40px', marginTop: '-400px' }} />
+          </div>
         </div>
 
       </form>
@@ -110,7 +113,7 @@ export function ReservationForm({ name, setName, email, setEmail, phone, setPhon
 function Field({ label, children, required = false }: { label: string; children: React.ReactNode; required?: boolean }) {
   return (
     <label className="block">
-      <span className="block font-display text-xs md:text-sm text-[var(--hey-yellow)] mb-1">
+      <span className="block text-xs md:text-sm text-[var(--hey-yellow)] mb-1" style={{ fontFamily: "'Londrina Solid', cursive" }}>
         {label}{required && <span className="text-[var(--hey-cream)] ml-0.5">*</span>}
       </span>
       {children}
@@ -129,6 +132,6 @@ function Select(props: React.SelectHTMLAttributes<HTMLSelectElement>) {
   return (
     <select {...props}
       className="w-full bg-[var(--hey-cream)] text-black border-2 border-black px-3 py-2.5 font-medium focus:outline-none focus:ring-4 focus:ring-[var(--hey-yellow)] appearance-none cursor-pointer text-sm"
-      style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><path fill='black' d='M5 8l5 5 5-5z'/></svg>\")", backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '20px' }} />
+      style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><path fill='black' d='M5 8l5 5 5-5z'/></svg>\")", backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '20px', fontFamily: "'Londrina Solid', cursive" }} />
   );
 }
