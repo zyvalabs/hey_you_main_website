@@ -7,7 +7,7 @@ import tongue1Svg from '../assets/heyou/mobile/tongue@2x.png'
 import barSideSvg from '../assets/heyou/mobile/bar side.svg'
 import { Footer } from "@/components/Footer";
 import { Link } from "@tanstack/react-router";
-import reserveTableBtnSvg from '../assets/heyou/reserve table button.svg'
+import reserveTableBtnSvg from '../assets/heyou/reserve table png@2x.png'
 
 export const Route = createFileRoute("/drink-eat")({
   head: () => ({
