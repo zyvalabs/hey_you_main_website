@@ -27,11 +27,10 @@ function DrinkEat() {
 
       {/* GREEN + BLUE */}
 {/* GREEN + BLUE */}
-<div className="flex flex-col md:flex-row md:items-stretch -mt-[13%]">
-  <div className="w-full md:w-[60%]"><img src={greenSvg} alt="Green" className="w-full h-full object-cover block" /></div>
+<div className="flex flex-col md:flex-row md:items-stretch">
+  <div className="w-full md:w-[60%]"><img src={greenSvg} alt="Green" className="w-full h-auto block" /></div>
   <div className="w-full md:w-[40%]"><img src={blueSvg} alt="Blue" className="w-full h-full object-cover block" /></div>
 </div>
-
 {/* TONGUE1 + BAR SIDE */}
 <div className="flex flex-col md:flex-row md:items-stretch">
   <div className="flex-1"><img src={tongue1Svg} alt="Tongue" className="w-full h-full object-cover block" /></div>
