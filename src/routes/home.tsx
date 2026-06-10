@@ -24,51 +24,20 @@ function Home() {
       <Header active="/home" />
       <img src={staySvg} alt="Stay" className="w-full h-auto block" />
       <img src={heyYouSvg} alt="Hey You" className="w-full h-auto block" />
+      <img src={welcomeImg} alt="Welcome" className="w-full h-auto block" />
 
-      <div className="relative">
-        <img src={welcomeImg} alt="Welcome" className="w-full h-auto block" />
-
-    {/* MOBILE */}
-<div className="flex md:hidden absolute top-[180px] left-1/2 flex-row gap-4">
-  <Link to="/reserve" search={{ venue: "bar" }}>
-    <div className="bg-[var(--hey-cream)] border-2 border-black p-2 shadow-[4px_4px_0_#000] flex flex-col gap-2 w-20">
-      <img src={heyouBarSvg} alt="Heyou Bar" className="w-full h-auto block" />
-    </div>
-  </Link>
-  <Link to="/reserve" search={{ venue: "dining" }}>
-    <div className="bg-[var(--hey-yellow)] border-2 border-black p-2 shadow-[4px_4px_0_#000] flex flex-col gap-2 w-20">
-      <img src={heyouDiningSvg} alt="Heyou Dining" className="w-full h-auto block" />
-    </div>
-  </Link>
-</div>
-
-{/* TABLET */}
-<div className="hidden md:flex lg:hidden absolute top-[300px] left-1/2 flex-row gap-8">
-  <Link to="/reserve" search={{ venue: "bar" }}>
-    <div className="bg-[var(--hey-cream)] border-2 border-black p-2 shadow-[4px_4px_0_#000] flex flex-col gap-2 w-36">
-      <img src={heyouBarSvg} alt="Heyou Bar" className="w-full h-auto block" />
-    </div>
-  </Link>
-  <Link to="/reserve" search={{ venue: "dining" }}>
-    <div className="bg-[var(--hey-yellow)] border-2 border-black p-2 shadow-[4px_4px_0_#000] flex flex-col gap-2 w-36">
-      <img src={heyouDiningSvg} alt="Heyou Dining" className="w-full h-auto block" />
-    </div>
-  </Link>
-</div>
-
-{/* LAPTOP + DESKTOP */}
-<div className="hidden lg:flex absolute top-[850px] left-1/2 flex-row gap-16">
-  <Link to="/reserve" search={{ venue: "bar" }}>
-    <div className="bg-[var(--hey-cream)] border-2 border-black p-3 shadow-[4px_4px_0_#000] flex flex-col gap-2 w-88">
-      <img src={heyouBarSvg} alt="Heyou Bar" className="w-full h-auto block" />
-    </div>
-  </Link>
-  <Link to="/reserve" search={{ venue: "dining" }}>
-    <div className="bg-[var(--hey-yellow)] border-2 border-black p-3 shadow-[4px_4px_0_#000] flex flex-col gap-2 w-88">
-      <img src={heyouDiningSvg} alt="Heyou Dining" className="w-full h-auto block" />
-    </div>
-  </Link>
-</div>
+      {/* VENUE CARDS */}
+      <div className="bg-[var(--hey-black)] px-4 py-6 flex flex-row gap-4 justify-center items-stretch">
+        <Link to="/reserve" search={{ venue: "bar" }} className="flex-1 max-w-xs">
+          <div className="bg-[var(--hey-cream)] border-2 border-black p-3 shadow-[4px_4px_0_#000] hover:-translate-y-1 transition-transform duration-200 h-full">
+            <img src={heyouBarSvg} alt="Heyou Bar" className="w-full h-auto block" />
+          </div>
+        </Link>
+        <Link to="/reserve" search={{ venue: "dining" }} className="flex-1 max-w-xs">
+          <div className="bg-[var(--hey-yellow)] border-2 border-black p-3 shadow-[4px_4px_0_#000] hover:-translate-y-1 transition-transform duration-200 h-full">
+            <img src={heyouDiningSvg} alt="Heyou Dining" className="w-full h-auto block" />
+          </div>
+        </Link>
       </div>
 
       <Footer />
