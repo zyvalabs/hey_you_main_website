@@ -38,7 +38,7 @@ function DrinkEat() {
   <div className="flex-1"><img src={barSideSvg} alt="Bar Side" className="w-full h-full object-cover block" /></div>
 </div>
 <Link to="/reserve" className="block">
-  <img src={reserveTableBtnSvg} alt="Reserve Table" className="w-full h-auto block scale-125 md:scale-100" />
+  <img src={reserveTableBtnSvg} alt="Reserve Table" className="w-full h-auto block" />
 </Link>
 
       <Footer />
