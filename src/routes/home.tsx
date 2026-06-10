@@ -60,13 +60,13 @@ function Home() {
       {/* DESKTOP — tongue left, right side: oneplace top + cards below */}
       <div className="hidden md:flex flex-row bg-[var(--hey-black)] items-stretch">
         {/* LEFT — tongue */}
-        <div className="w-1/2 flex items-center justify-center">
-          <img src={tongueSvg} alt="" className="w-full h-auto block" />
-        </div>
+<div className="w-1/2 flex items-center justify-center overflow-visible">
+  <img src={tongueSvg} alt="" className="w-full h-auto block -ml-[30%] -mt-[10%]" />
+</div>
         {/* RIGHT — oneplace + cards */}
         <div className="w-1/2 flex flex-col items-center justify-center px-8 py-8 gap-6">
-          <img src={onePlaceSvg} alt="One Place" className="w-full h-auto block" />
-          <div className="flex flex-row gap-6 w-full">
+<img src={onePlaceSvg} alt="One Place" className="w-3/4 h-auto block" />
+<div className="flex flex-row gap-6 w-3/4 mx-auto">
             <Link to="/reserve" search={{ venue: "bar" }} className="flex-1">
               <div className="bg-[var(--hey-cream)] border-2 border-black p-3 shadow-[4px_4px_0_#000] hover:-translate-y-1 transition-transform duration-200 h-full">
                 <img src={heyouBarSvg} alt="Heyou Bar" className="w-full h-auto block" />

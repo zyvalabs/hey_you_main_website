@@ -25,16 +25,20 @@ function DrinkEat() {
       <img src={drinkEatStaySvg} alt="Drink Eat Stay" className="w-full h-auto block" />
 
       {/* GREEN + BLUE */}
-      <div className="flex flex-col md:flex-row">
-        <div className="flex-1"><img src={greenSvg} alt="Green" className="w-full h-full object-cover" /></div>
-        <div className="flex-1"><img src={blueSvg} alt="Blue" className="w-full h-full object-cover" /></div>
-      </div>
+<div className="flex flex-col md:flex-row -mt-[13%]">
+  <div className="flex-1 overflow-hidden">
+    <img src={greenSvg} alt="Green" className="w-full h-auto block" />
+  </div>
+  <div className="flex-1">
+    <img src={blueSvg} alt="Blue" className="w-full h-auto block" />
+  </div>
+</div>
 
-      {/* TONGUE1 + BAR SIDE */}
-      <div className="flex flex-col md:flex-row">
-        <div className="flex-1"><img src={tongue1Svg} alt="Tongue" className="w-full h-full object-cover" /></div>
-        <div className="flex-1"><img src={barSideSvg} alt="Bar Side" className="w-full h-full object-cover" /></div>
-      </div>
+{/* TONGUE1 + BAR SIDE */}
+<div className="flex flex-col md:flex-row">
+  <div className="flex-1"><img src={tongue1Svg} alt="Tongue" className="w-full h-auto block" /></div>
+  <div className="flex-1"><img src={barSideSvg} alt="Bar Side" className="w-full h-auto block" /></div>
+</div>
 
       <Footer />
       <BottomNav />
