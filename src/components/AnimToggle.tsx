@@ -1,7 +1,7 @@
 export function AnimToggle() {
   return (
     <a
-      href="https://wa.me/919108167707"
+    href={`https://wa.me/919108167707?text=${encodeURIComponent(`Hi HEYOU, we're planning to stop by and stay a while.\nI'd like to enquire about a table reservation.\n\nDate:\nTime:\nNumber of guests:\nPreferred area: HEYOU Bar / HEYOU Dining\nName:`)}`}
       target="_blank"
       rel="noopener noreferrer"
       title="Chat on WhatsApp"

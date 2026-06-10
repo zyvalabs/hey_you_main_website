@@ -8,8 +8,8 @@ import heyouGlowingSvg from '../assets/heyou/mobile/heyou glowing.svg'
 import forYouSvg from '../assets/heyou/mobile/for you.svg'
 import tongueSvg from '../assets/heyou/mobile/tongue.svg'
 import onePlaceSvg from '../assets/heyou/mobile/one place.svg'
-import heyouBarSvg from '../assets/heyou/heyyou bar.svg'
-import heyouDiningSvg from '../assets/heyou/heyyou dining.svg'
+import heyouBarSvg from '../assets/heyou/mobile/bar.svg'
+import heyouDiningSvg from '../assets/heyou/mobile/dining.svg'
 
 export const Route = createFileRoute("/home")({
   head: () => ({
@@ -35,22 +35,22 @@ function Home() {
       <img src={heyouGlowingSvg} alt="Heyou" className="w-full h-auto block" />
 
       {/* FOR YOU */}
-<div className="bg-[var(--hey-red)] w-full h-68 flex items-center justify-center">
-        <img src={forYouSvg} alt="For You" className="h-24 w-auto" />
-      </div>
+<div className="bg-[var(--hey-red)] w-full h-auto py-8 md:h-68 md:py-0 flex items-center justify-center">
+  <img src={forYouSvg} alt="For You" className="h-12 md:h-24 w-auto" />
+</div>
 
       {/* MOBILE — stacked: tongue → oneplace → cards */}
       <div className="md:hidden bg-[var(--hey-black)]">
         <img src={tongueSvg} alt="" className="w-full h-auto block" />
-        <img src={onePlaceSvg} alt="One Place" className="w-full h-auto block" />
+<img src={onePlaceSvg} alt="One Place" className="w-2/3 h-auto block mx-auto mt-6" />
         <div className="px-4 py-6 flex flex-row gap-4 justify-center items-stretch">
           <Link to="/reserve" search={{ venue: "bar" }} className="flex-1">
-            <div className="bg-[var(--hey-cream)] border-2 border-black p-3 shadow-[4px_4px_0_#000] h-full">
+            <div className="bg-[var(--hey-transparent)] border-2 border-black p-3 shadow-[4px_4px_0_#000] h-full">
               <img src={heyouBarSvg} alt="Heyou Bar" className="w-full h-auto block" />
             </div>
           </Link>
           <Link to="/reserve" search={{ venue: "dining" }} className="flex-1">
-            <div className="bg-[var(--hey-yellow)] border-2 border-black p-3 shadow-[4px_4px_0_#000] h-full">
+            <div className="bg-[var(--hey-transparent)] border-2 border-black p-3 shadow-[4px_4px_0_#000] h-full">
               <img src={heyouDiningSvg} alt="Heyou Dining" className="w-full h-auto block" />
             </div>
           </Link>
@@ -65,15 +65,15 @@ function Home() {
 </div>
         {/* RIGHT — oneplace + cards */}
         <div className="w-1/2 flex flex-col items-center justify-center px-8 py-8 gap-6">
-<img src={onePlaceSvg} alt="One Place" className="w-3/4 h-auto block" />
+<img src={onePlaceSvg} alt="One Place" className="w-2/3 h-auto block mx-auto" />
 <div className="flex flex-row gap-6 w-3/4 mx-auto">
             <Link to="/reserve" search={{ venue: "bar" }} className="flex-1">
-              <div className="bg-[var(--hey-cream)] border-2 border-black p-3 shadow-[4px_4px_0_#000] hover:-translate-y-1 transition-transform duration-200 h-full">
+              <div className="bg-[var(--hey-transparent)] border-2 border-black p-3 shadow-[4px_4px_0_#000] hover:-translate-y-1 transition-transform duration-200 h-full">
                 <img src={heyouBarSvg} alt="Heyou Bar" className="w-full h-auto block" />
               </div>
             </Link>
             <Link to="/reserve" search={{ venue: "dining" }} className="flex-1">
-              <div className="bg-[var(--hey-yellow)] border-2 border-black p-3 shadow-[4px_4px_0_#000] hover:-translate-y-1 transition-transform duration-200 h-full">
+              <div className="bg-[var(--hey-transparent)] border-2 border-black p-3 shadow-[4px_4px_0_#000] hover:-translate-y-1 transition-transform duration-200 h-full">
                 <img src={heyouDiningSvg} alt="Heyou Dining" className="w-full h-auto block" />
               </div>
             </Link>

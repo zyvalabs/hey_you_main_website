@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 327.56 380.74">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-2 {
+        letter-spacing: -.11em;
+      }
+
+      .cls-3 {
+        letter-spacing: 0em;
+      }
+
+      .cls-4 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-5 {
+        letter-spacing: 0em;
+      }
+
+      .cls-6 {
+        letter-spacing: 0em;
+      }
+
+      .cls-7 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-8 {
+        letter-spacing: 0em;
+      }
+
+      .cls-9 {
+        fill: #d1d628;
+      }
+
+      .cls-10 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-11 {
+        letter-spacing: 0em;
+      }
+
+      .cls-12 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-13 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-14, .cls-15 {
+        fill: #010101;
+      }
+
+      .cls-15 {
+        font-family: Manchise-Regular, Manchise;
+        font-size: 61.27px;
+      }
+
+      .cls-16 {
+        font-family: LondrinaSolid-Light, 'Londrina Solid';
+        font-size: 24.42px;
+        font-weight: 300;
+      }
+
+      .cls-17 {
+        fill: #f7f0e3;
+        font-family: LondrinaSolid-Regular, 'Londrina Solid';
+        font-size: 30.01px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <rect class="cls-9" x="0" width="327.56" height="380.74" rx="31.13" ry="31.13"/>
+    <text class="cls-15" transform="translate(41.73 85.75)"><tspan x="0" y="0">HE</tspan><tspan class="cls-2" x="59.43" y="0">Y</tspan><tspan x="85.97" y="0">OU </tspan><tspan x="0" y="53.51">DINING</tspan></text>
+    <rect class="cls-14" x="41.73" y="295.36" width="244.11" height="46.92" rx="23.46" ry="23.46"/>
+    <text class="cls-16" transform="translate(41.73 174.36)"><tspan x="0" y="0">·</tspan><tspan class="cls-4" x="4" y="0">A</tspan><tspan x="14.19" y="0" xml:space="preserve"> more s</tspan><tspan class="cls-11" x="81.72" y="0">e</tspan><tspan class="cls-8" x="92.46" y="0">ttled</tspan><tspan class="cls-12" x="138.55" y="0"> </tspan><tspan class="cls-6" x="143.09" y="0">t</tspan><tspan class="cls-3" x="152.45" y="0">able </tspan><tspan x="0" y="29.31">fo</tspan><tspan class="cls-10" x="20.2" y="29.31">r</tspan><tspan class="cls-13" x="28.16" y="29.31"> </tspan><tspan class="cls-6" x="32.75" y="29.31">f</tspan><tspan class="cls-3" x="41.91" y="29.31">amilies,</tspan><tspan class="cls-12" x="111.81" y="29.31"> </tspan><tspan class="cls-8" x="116.35" y="29.31">teams, groups</tspan><tspan x="0" y="58.62">·Dinne</tspan><tspan class="cls-1" x="53.66" y="58.62">r</tspan><tspan class="cls-12" x="61.62" y="58.62"> </tspan><tspan class="cls-8" x="66.16" y="58.62">that </tspan><tspan class="cls-11" x="0" y="87.92">t</tspan><tspan x="9.35" y="87.92">a</tspan><tspan class="cls-7" x="20.98" y="87.92">k</tspan><tspan x="30.97" y="87.92">es its</tspan><tspan class="cls-12" x="83.18" y="87.92"> </tspan><tspan x="87.73" y="87.92">time.</tspan></text>
+    <text class="cls-17" transform="translate(72.62 328.61)"><tspan x="0" y="0">RESE</tspan><tspan class="cls-5" x="58.97" y="0">R</tspan><tspan x="74.3" y="0">VE DINING</tspan></text>
+  </g>
+</svg>
