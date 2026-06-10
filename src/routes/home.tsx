@@ -8,8 +8,8 @@ import heyouGlowingSvg from '../assets/heyou/mobile/heyou glowing.svg'
 import forYouSvg from '../assets/heyou/mobile/for you.svg'
 import tongueSvg from '../assets/heyou/mobile/tongue.svg'
 import onePlaceSvg from '../assets/heyou/mobile/one place.svg'
-import heyouBarSvg from '../assets/heyou/mobile/bar.svg'
-import heyouDiningSvg from '../assets/heyou/mobile/dining.svg'
+import heyouBarSvg from '../assets/heyou/mobile/bar @2x.png'
+import heyouDiningSvg from '../assets/heyou/mobile/dining@2x.png'
 
 export const Route = createFileRoute("/home")({
   head: () => ({
