@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AnimToggle } from "../components/AnimToggle";
 import { PageLoader } from "@/components/PageLoader";
+import faviconImg from '../assets/heyou/red logo.svg'
 
 function NotFoundComponent() {
   return (
@@ -109,6 +110,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   {
     rel: "stylesheet",
     href: appCss,
+  },
+    {
+    rel: "icon",
+    href: faviconImg,
+    type: "image/png",
   },
 ],
   }),
