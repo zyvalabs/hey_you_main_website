@@ -34,13 +34,14 @@ function Home() {
       <section className="bg-[var(--hey-red)]">
         <div className="max-w-[1800px] mx-auto px-6 md:px-12 py-8 md:py-16">
           <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 lg:gap-20">
-            
+
             {/* STAY */}
             <div className="w-full lg:w-[55%] flex justify-center lg:justify-start">
               <img
                 src={staySvgMobile}
                 alt="Stay"
-                className="w-full md:w-[95%] lg:w-[850px] h-auto"
+                className="h-auto"
+                style={{ width: 'clamp(280px, 60vw, 850px)' }}
               />
             </div>
 
@@ -49,7 +50,8 @@ function Home() {
               <img
                 src={starSvg}
                 alt="Star"
-                className="w-[450px] md:w-[400px] lg:w-[600px] xl:w-[750px] h-auto"
+                className="h-auto"
+                style={{ width: 'clamp(280px, 35vw, 750px)' }}
               />
             </div>
 
@@ -70,7 +72,8 @@ function Home() {
           <img
             src={forYouSvg}
             alt="For You"
-            className="w-[90%] md:w-auto h-20 md:h-36"
+            className="h-auto"
+            style={{ width: 'clamp(250px, 60vw, 600px)' }}
           />
         </div>
       </section>
@@ -95,7 +98,8 @@ function Home() {
               <img
                 src={onePlaceSvg}
                 alt="One Place"
-                className="w-[90%] md:w-[80%] lg:w-[75%] h-auto mb-10"
+                className="h-auto mb-10"
+                style={{ width: 'clamp(250px, 70vw, 600px)' }}
               />
 
               <div className="grid grid-cols-2 gap-6 w-full max-w-[650px]">
