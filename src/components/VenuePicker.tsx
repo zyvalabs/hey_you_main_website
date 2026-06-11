@@ -110,11 +110,11 @@ export function VenuePicker({
         </div>
       </div>
 
-      <div className="hidden lg:flex absolute right-[-40px] top-8 pointer-events-none z-10">
+      <div className="hidden lg:flex absolute right-[-210px] top-8 pointer-events-none z-10">
         <img
           src={handGlassSvg}
           alt=""
-          className="w-auto h-[180px]"
+          className="w-auto h-[280px]"
         />
       </div>
     </div>

@@ -240,8 +240,8 @@ export function ReservationForm({
             )}
           </div>
 
-          <div className="pointer-events-none absolute right-[-180px] top-1/2 hidden -translate-y-1/2 xl:flex">
-            <img src={handGlass1Svg} alt="" className="h-[420px] w-auto" />
+          <div className="pointer-events-none absolute right-[-300px] top-1/2 hidden -translate-y-1/2 xl:flex">
+            <img src={handGlass1Svg} alt="" className="h-[520px] w-auto" />
           </div>
         </div>
       </form>
