@@ -14,7 +14,10 @@ export const Route = createFileRoute("/reserve")({
   head: () => ({
     meta: [
       { title: "Reserve a Table — Heyou" },
-      { name: "description", content: "Book a table at Heyou Bar or Heyou Dining, Bangalore." },
+      {
+        name: "description",
+        content: "Book a table at Heyou Bar or Heyou Dining, Bangalore.",
+      },
     ],
   }),
   component: Reserve,
@@ -40,92 +43,152 @@ function Reserve() {
   const [venueError, setVenueError] = useState(false);
 
   const allFilled = useMemo(() => {
-    return venue !== null &&
+    return (
+      venue !== null &&
       name.trim().length > 0 &&
       email.trim().length > 0 &&
       phone.trim().length > 0 &&
-      guests !== "" && date !== "" && time !== "";
+      guests !== "" &&
+      date !== "" &&
+      time !== ""
+    );
   }, [venue, name, email, phone, guests, date, time]);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!venue) { setVenueError(true); return; }
+    if (!venue) {
+      setVenueError(true);
+      return;
+    }
     if (!name.trim() || !email.trim() || !phone.trim() || !date || !time || !guests) return;
+
     setSaving(true);
     setError(null);
 
     const { error: err } = await supabase.from("reservations").insert({
-      venue, guests, reservation_time: time, reservation_date: date,
-      name: name.trim(), email: email.trim(), phone: phone.trim(),
-      occasion: occasion || null, notes: notes || null,
-      bar_section: (venue === "bar" ? barSection : null) as string | null,
+      venue,
+      guests,
+      reservation_time: time,
+      reservation_date: date,
+      name: name.trim(),
+      email: email.trim(),
+      phone: phone.trim(),
+      occasion: occasion || null,
+      notes: notes || null,
+      bar_section: venue === "bar" ? barSection : null,
     } as any);
 
     setSaving(false);
-    if (err) { setError(err.message || "Could not save. Please try again."); return; }
 
-    // SEND EMAIL
-    try {
-      console.log("Sending email...");
-      const payload = { name, email, phone, venue, guests, date, time, occasion, notes, bar_section: venue === "bar" ? barSection : null };
-      console.log("Payload:", JSON.stringify(payload));
-
-      const res = await fetch("https://mtwvsobgsxvjmoqjgpkr.supabase.co/functions/v1/send-reservation-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10d3Zzb2Jnc3h2am1vcWpncGtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3Mjg4MzYsImV4cCI6MjA5NjMwNDgzNn0.tiP2bM3xgznWt-B0RZa3FsBOQskD1whSILjCyn0I9m4",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      console.log("Email response status:", res.status);
-      const data = await res.json();
-      console.log("Email response data:", data);
-    } catch (emailErr) {
-      console.error("Email fetch error:", emailErr);
+    if (err) {
+      setError(err.message || "Could not save. Please try again.");
+      return;
     }
 
+    try {
+      const payload = {
+        name,
+        email,
+        phone,
+        venue,
+        guests,
+        date,
+        time,
+        occasion,
+        notes,
+        bar_section: venue === "bar" ? barSection : null,
+      };
+
+      await fetch(
+        "https://mtwvsobgsxvjmoqjgpkr.supabase.co/functions/v1/send-reservation-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization":
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10d3Zzb2Jnc3h2am1vcWpncGtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3Mjg4MzYsImV4cCI6MjA5NjMwNDgzNn0.tiP2bM3xgznWt-B0RZa3FsBOQskD1whSILjCyn0I9m4",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+    } catch {}
+
     setSubmitted(true);
-    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   }
 
   function resetForm() {
     setSubmitted(false);
-    setVenue(null); setName(""); setEmail(""); setPhone("");
-    setOccasion(""); setNotes(""); setDate(""); setGuests(""); setTime("");
+    setVenue(null);
+    setName("");
+    setEmail("");
+    setPhone("");
+    setOccasion("");
+    setNotes("");
+    setDate("");
+    setGuests("");
+    setTime("");
   }
 
   if (submitted) {
-    return <ReservationConfirmation
-      venue={venue!} guests={guests} date={date} time={time}
-      name={name} email={email} phone={phone} occasion={occasion} notes={notes}
-      onReset={resetForm}
-    />;
+    return (
+      <ReservationConfirmation
+        venue={venue!}
+        guests={guests}
+        date={date}
+        time={time}
+        name={name}
+        email={email}
+        phone={phone}
+        occasion={occasion}
+        notes={notes}
+        onReset={resetForm}
+      />
+    );
   }
 
   return (
     <main className="min-h-screen overflow-x-hidden flex flex-col pb-16 md:pb-0">
       <Header active="/reserve" />
-      <div className="flex flex-col md:flex-row flex-1 relative">
+
+      <section className="flex flex-col md:flex-row flex-1">
         <VenuePicker
-          venue={venue} venueError={venueError} barSection={barSection}
-          onVenueSelect={(v) => { setVenue(v); setVenueError(false); }}
+          venue={venue}
+          venueError={venueError}
+          barSection={barSection}
+          onVenueSelect={(v) => {
+            setVenue(v);
+            setVenueError(false);
+          }}
           onBarSectionSelect={setBarSection}
         />
+
         <ReservationForm
-          name={name} setName={setName}
-          email={email} setEmail={setEmail}
-          phone={phone} setPhone={setPhone}
-          guests={guests} setGuests={setGuests}
-          date={date} setDate={setDate}
-          time={time} setTime={setTime}
-          occasion={occasion} setOccasion={setOccasion}
-          notes={notes} setNotes={setNotes}
-          allFilled={allFilled} saving={saving} error={error}
+          name={name}
+          setName={setName}
+          email={email}
+          setEmail={setEmail}
+          phone={phone}
+          setPhone={setPhone}
+          guests={guests}
+          setGuests={setGuests}
+          date={date}
+          setDate={setDate}
+          time={time}
+          setTime={setTime}
+          occasion={occasion}
+          setOccasion={setOccasion}
+          notes={notes}
+          setNotes={setNotes}
+          allFilled={allFilled}
+          saving={saving}
+          error={error}
           onSubmit={onSubmit}
         />
-      </div>
+      </section>
+
       <Footer />
       <BottomNav />
     </main>
