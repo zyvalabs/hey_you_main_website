@@ -1,6 +1,7 @@
 import reserveTextSvg from '../assets/heyou/reserve text.svg'
 import heyouBarSvg from '../assets/heyou/heyyou bar.svg'
 import heyouDiningSvg from '../assets/heyou/heyyou dining.svg'
+import handGlassSvg from '../assets/heyou/hand glass.svg'
 
 type Venue = "bar" | "dining";
 
@@ -14,7 +15,7 @@ interface Props {
 
 export function VenuePicker({ venue, venueError, barSection, onVenueSelect, onBarSectionSelect }: Props) {
   return (
-    <div className="w-full bg-[var(--hey-black)] flex flex-col justify-start px-6 py-8 gap-5 border-r border-white/10">
+    <div className="md:w-2/5 bg-[var(--hey-black)] flex flex-col justify-center px-6 py-8 md:px-10 md:py-12 gap-5 border-r border-white/10">
       <img src={reserveTextSvg} alt="Reserve" style={{ width: '100%', height: 'auto', display: 'block' }} />
 
       {venueError && !venue && (
@@ -29,24 +30,24 @@ export function VenuePicker({ venue, venueError, barSection, onVenueSelect, onBa
             <img src={heyouBarSvg} alt="Heyou Bar" style={{ width: '100%', height: 'auto', display: 'block' }} />
             <div className={`w-4 h-4 rounded-full border-2 border-black self-end transition-all duration-200 ${venue === "bar" ? "bg-black" : "bg-transparent"}`} />
             {venue === "bar" && (
-              <div className="flex gap-2 mt-1">
-                <button type="button" onClick={(e) => { e.stopPropagation(); onBarSectionSelect("indoor"); }}
-                  className={`py-1 text-xs font-bold border-2 border-black transition-all duration-200 ${
-                    barSection === "indoor"
-                      ? "flex-[2] py-2 text-sm bg-black text-[var(--hey-cream)] scale-105 shadow-[3px_3px_0_#555]"
-                      : "flex-1 py-1 text-xs bg-white text-black opacity-50 scale-95"
-                  }`}>
-                  Indoor
-                </button>
-                <button type="button" onClick={(e) => { e.stopPropagation(); onBarSectionSelect("outdoor"); }}
-                  className={`py-1 text-xs font-bold border-2 border-black transition-all duration-200 ${
-                    barSection === "outdoor"
-                      ? "flex-[2] py-2 text-sm bg-black text-[var(--hey-cream)] scale-105 shadow-[3px_3px_0_#555]"
-                      : "flex-1 py-1 text-xs bg-white text-black opacity-50 scale-95"
-                  }`}>
-                  Outdoor
-                </button>
-              </div>
+          <div className="flex gap-2 mt-1">
+  <button type="button" onClick={(e) => { e.stopPropagation(); onBarSectionSelect("indoor"); }}
+    className={`py-1 text-xs font-bold border-2 border-black transition-all duration-200 ${
+      barSection === "indoor"
+        ? "flex-[2] py-2 text-sm bg-black text-[var(--hey-cream)] scale-105 shadow-[3px_3px_0_#555]"
+        : "flex-1 py-1 text-xs bg-white text-black opacity-50 scale-95"
+    }`}>
+    Indoor
+  </button>
+  <button type="button" onClick={(e) => { e.stopPropagation(); onBarSectionSelect("outdoor"); }}
+    className={`py-1 text-xs font-bold border-2 border-black transition-all duration-200 ${
+      barSection === "outdoor"
+        ? "flex-[2] py-2 text-sm bg-black text-[var(--hey-cream)] scale-105 shadow-[3px_3px_0_#555]"
+        : "flex-1 py-1 text-xs bg-white text-black opacity-50 scale-95"
+    }`}>
+    Outdoor
+  </button>
+</div>
             )}
           </div>
         </button>
@@ -60,6 +61,12 @@ export function VenuePicker({ venue, venueError, barSection, onVenueSelect, onBa
           </div>
         </button>
       </div>
+
+      {/* HAND GLASS DIVIDER */}
+    {/* HAND GLASS DIVIDER */}
+<div className="block absolute left-[40%] top-0 translate-x-0 z-10 flex items-start justify-center" style={{ pointerEvents: 'none' }}>
+  <img src={handGlassSvg} alt="" className="hidden md:block w-auto" style={{ height: 'clamp(100px, 15vw, 300px)' }} />
+</div>
     </div>
   );
 }
