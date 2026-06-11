@@ -25,7 +25,7 @@ interface Props {
 
 export function ReservationForm({ name, setName, email, setEmail, phone, setPhone, guests, setGuests, date, setDate, time, setTime, occasion, setOccasion, notes, setNotes, allFilled, saving, error, onSubmit }: Props) {
   return (
-    <div className="md:w-3/5 bg-[var(--hey-red)] flex flex-col justify-center px-6 py-8 md:px-10 md:py-12">
+    <div className="md:w-3/5 bg-[var(--hey-red)] flex flex-col justify-start md:justify-center px-6 py-8 md:px-10 md:py-12">
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap');`}</style>
       <form onSubmit={onSubmit} className="space-y-4 w-full max-w-lg mx-auto">
         <h2 className="text-[var(--hey-cream)] text-2xl md:text-3xl mb-2" style={{ fontFamily: "'Londrina Solid', cursive" }}>Your Details</h2>
@@ -101,7 +101,7 @@ export function ReservationForm({ name, setName, email, setEmail, phone, setPhon
             {error && <p className="text-center text-[var(--hey-yellow)] font-bold text-sm">{error}</p>}
           </div>
           <div className="absolute -right-80 top-30 bottom-0 flex items-center" style={{ pointerEvents: 'none' }}>
-            <img src={handGlass1Svg} alt="" style={{ height: '600px', width: 'auto', marginRight: '-40px', marginTop: '-400px' }} />
+            <img src={handGlass1Svg} alt="" style={{ height: 'clamp(300px, 40vw, 600px)', width: 'auto', marginRight: 'clamp(-20px, -2vw, -40px)', marginTop: 'clamp(-200px, -25vw, -400px)' }} />
           </div>
         </div>
 
