@@ -10,16 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ReserveRouteImport } from './routes/reserve'
+import { Route as ReservationRouteImport } from './routes/reservation'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as FooterRouteImport } from './routes/footer'
 import { Route as Drink_eat1RouteImport } from './routes/drink_eat1'
 import { Route as DrinkEatRouteImport } from './routes/drink-eat'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ReserveRoute = ReserveRouteImport.update({
   id: '/reserve',
   path: '/reserve',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReservationRoute = ReservationRouteImport.update({
+  id: '/reservation',
+  path: '/reservation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HomeRoute = HomeRouteImport.update({
@@ -47,6 +54,11 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -55,69 +67,83 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/drink-eat': typeof DrinkEatRoute
   '/drink_eat1': typeof Drink_eat1Route
   '/footer': typeof FooterRoute
   '/home': typeof HomeRoute
+  '/reservation': typeof ReservationRoute
   '/reserve': typeof ReserveRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/drink-eat': typeof DrinkEatRoute
   '/drink_eat1': typeof Drink_eat1Route
   '/footer': typeof FooterRoute
   '/home': typeof HomeRoute
+  '/reservation': typeof ReservationRoute
   '/reserve': typeof ReserveRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/drink-eat': typeof DrinkEatRoute
   '/drink_eat1': typeof Drink_eat1Route
   '/footer': typeof FooterRoute
   '/home': typeof HomeRoute
+  '/reservation': typeof ReservationRoute
   '/reserve': typeof ReserveRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/admin'
     | '/drink-eat'
     | '/drink_eat1'
     | '/footer'
     | '/home'
+    | '/reservation'
     | '/reserve'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/admin'
     | '/drink-eat'
     | '/drink_eat1'
     | '/footer'
     | '/home'
+    | '/reservation'
     | '/reserve'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/admin'
     | '/drink-eat'
     | '/drink_eat1'
     | '/footer'
     | '/home'
+    | '/reservation'
     | '/reserve'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
   DrinkEatRoute: typeof DrinkEatRoute
   Drink_eat1Route: typeof Drink_eat1Route
   FooterRoute: typeof FooterRoute
   HomeRoute: typeof HomeRoute
+  ReservationRoute: typeof ReservationRoute
   ReserveRoute: typeof ReserveRoute
 }
 
@@ -128,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/reserve'
       fullPath: '/reserve'
       preLoaderRoute: typeof ReserveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reservation': {
+      id: '/reservation'
+      path: '/reservation'
+      fullPath: '/reservation'
+      preLoaderRoute: typeof ReservationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/home': {
@@ -165,6 +198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -177,11 +217,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
   DrinkEatRoute: DrinkEatRoute,
   Drink_eat1Route: Drink_eat1Route,
   FooterRoute: FooterRoute,
   HomeRoute: HomeRoute,
+  ReservationRoute: ReservationRoute,
   ReserveRoute: ReserveRoute,
 }
 export const routeTree = rootRouteImport
