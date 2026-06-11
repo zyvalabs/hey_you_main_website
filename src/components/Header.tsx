@@ -3,7 +3,7 @@ import { useState } from "react";
 import logoImg from '../assets/heyou/logo.svg'
 
 const navLinks = [
-  { label: "About", href: "/home" },
+  { label: "About", href: "/" },
   { label: "Drink/Eat", href: "/drink-eat" },
   { label: "Reserve", href: "/reservation" },
 ];
@@ -26,7 +26,7 @@ export function Header({ active }: { active: string }) {
 
         {/* CENTER — logo absolutely centered */}
         <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center py-2">
-          <Link to="/home">
+          <Link to="/">
             <img
               src={logoImg}
               alt="Heyou"
@@ -68,7 +68,7 @@ export function BottomNav() {
   const location = useLocation();
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[var(--hey-black)] border-t border-white/10 flex items-center justify-around px-2 py-1.5">
-      <Link to="/home" className={`flex flex-col items-center gap-0.5 px-3 py-1 rounded-xl transition-all duration-200 ${location.pathname === '/home' ? 'text-[var(--hey-yellow)]' : 'text-[var(--hey-cream)]/60'}`}>
+      <Link to="/" className={`flex flex-col items-center gap-0.5 px-3 py-1 rounded-xl transition-all duration-200 ${location.pathname === '/' ? 'text-[var(--hey-yellow)]' : 'text-[var(--hey-cream)]/60'}`}>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
         </svg>
