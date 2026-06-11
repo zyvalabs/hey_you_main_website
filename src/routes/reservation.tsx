@@ -8,9 +8,9 @@ import { ReservationForm } from "../components/ReservationForm";
 import { ReservationConfirmation } from "../components/ReservationConfirmation";
 
 export const Route = createFileRoute("/reservation")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    venue: (search.venue as string) || null,
-  }),
+validateSearch: (search: Record<string, unknown>) => ({
+  venue: (search.venue as string) || undefined,
+}),
   head: () => ({
     meta: [
       { title: "Reserve a Table — Heyou" },
