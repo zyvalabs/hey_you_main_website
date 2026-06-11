@@ -27,31 +27,31 @@ export const Route = createFileRoute("/home")({
 
 function Home() {
   return (
-    <main className="min-h-screen overflow-x-hidden pb-16 md:pb-0">
+    <main className="min-h-screen overflow-x-hidden pb-16">
       <Header active="/home" />
 
       {/* HERO */}
       <section className="bg-[var(--hey-red)]">
-        <div className="max-w-[1800px] mx-auto px-6 md:px-12 py-8 md:py-16">
-          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 lg:gap-20">
+        <div className="max-w-[1800px] mx-auto px-6 py-8">
+          <div className="flex flex-col items-center justify-between gap-8">
 
             {/* STAY */}
-            <div className="w-full lg:w-[55%] flex justify-center lg:justify-start">
+            <div className="w-full flex justify-center">
               <img
                 src={staySvgMobile}
                 alt="Stay"
                 className="h-auto"
-                style={{ width: 'clamp(280px, 60vw, 850px)' }}
+                style={{ width: 'clamp(280px, 90vw, 850px)' }}
               />
             </div>
 
             {/* STAR */}
-            <div className="w-full lg:w-[45%] flex justify-center lg:justify-end items-start">
+            <div className="w-full flex justify-center items-start">
               <img
                 src={starSvg}
                 alt="Star"
                 className="h-auto"
-                style={{ width: 'clamp(280px, 35vw, 750px)' }}
+                style={{ width: 'clamp(280px, 60vw, 750px)' }}
               />
             </div>
 
@@ -63,17 +63,17 @@ function Home() {
       <img
         src={heyouGlowingSvg}
         alt="Heyou"
-        className="w-full h-[250px] md:h-[450px] lg:h-[650px] object-cover block"
+        className="w-full h-[250px] object-cover block"
       />
 
       {/* FOR YOU */}
-      <section className="bg-[var(--hey-red)] py-12 md:py-20">
+      <section className="bg-[var(--hey-red)] py-12">
         <div className="flex justify-center items-center">
           <img
             src={forYouSvg}
             alt="For You"
             className="h-auto"
-            style={{ width: 'clamp(250px, 60vw, 600px)' }}
+            style={{ width: 'clamp(250px, 80vw, 600px)' }}
           />
         </div>
       </section>
@@ -81,25 +81,25 @@ function Home() {
       {/* ONE PLACE SECTION */}
       <section className="bg-[var(--hey-black)] overflow-hidden">
         <div className="max-w-[1800px] mx-auto">
-          <div className="flex flex-col lg:flex-row items-center lg:items-stretch">
+          <div className="flex flex-col items-center">
 
             {/* LEFT SIDE */}
-            <div className="w-full lg:w-[55%] flex justify-start items-center overflow-hidden">
+            <div className="w-full flex justify-start items-center overflow-hidden">
               <img
                 src={tongueSvg}
                 alt=""
-                className="w-[115%] lg:w-[135%] max-w-none h-auto -ml-[8%]"
+                className="w-[115%] max-w-none h-auto -ml-[8%]"
               />
             </div>
 
             {/* RIGHT SIDE */}
-            <div className="w-full lg:w-[45%] flex flex-col items-center lg:items-start justify-center px-4 py-8 md:px-8 md:py-12">
+            <div className="w-full flex flex-col items-center justify-center px-4 py-8">
 
               <img
                 src={onePlaceSvg}
                 alt="One Place"
                 className="h-auto mb-10"
-                style={{ width: 'clamp(250px, 70vw, 600px)' }}
+                style={{ width: 'clamp(250px, 80vw, 600px)' }}
               />
 
               <div className="grid grid-cols-2 gap-6 w-full max-w-[650px]">
