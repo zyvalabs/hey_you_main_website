@@ -34,12 +34,12 @@ function Home() {
         <img
           src={staySvgMobile}
           alt="Stay"
-          className="w-full md:w-[40%] h-auto block"
+          className="w-full md:w-[60%] h-auto block"
         />
         <img
           src={starSvg}
           alt="Star"
-          className="w-full md:w-[28%] h-auto block"
+          className="w-full md:w-[38%] h-auto block"
         />
       </section>
 
