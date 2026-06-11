@@ -45,6 +45,7 @@ export function Footer() {
               <div className="flex flex-col text-left">
                 <span className="text-[10px] text-[var(--hey-cream)]/60">Call us</span>
                 <span className="text-xs md:text-sm text-[var(--hey-yellow)]">080 4725 0000</span>
+                  <span className="text-xs md:text-sm text-[var(--hey-yellow)]">089 0408 5005</span>
               </div>
             </div>
 
