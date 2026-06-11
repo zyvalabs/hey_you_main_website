@@ -117,8 +117,8 @@ export function VenuePicker({
       </div>
 
       {/* Hand-glass divider on the right, only on large screens */}
-      <div className="pointer-events-none absolute -right-10 top-8 hidden lg:flex">
-        <img src={handGlassSvg} alt="" className="h-[180px] w-auto" />
+      <div className="pointer-events-none absolute -right-53 top-8 hidden lg:flex">
+        <img src={handGlassSvg} alt="" className="h-[280px] w-auto" />
       </div>
     </div>
   );
