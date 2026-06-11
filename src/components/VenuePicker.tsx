@@ -1,7 +1,6 @@
 import reserveTextSvg from '../assets/heyou/reserve text.svg'
 import heyouBarSvg from '../assets/heyou/heyyou bar.svg'
 import heyouDiningSvg from '../assets/heyou/heyyou dining.svg'
-import handGlassSvg from '../assets/heyou/hand glass.svg'
 
 type Venue = "bar" | "dining";
 
@@ -15,7 +14,7 @@ interface Props {
 
 export function VenuePicker({ venue, venueError, barSection, onVenueSelect, onBarSectionSelect }: Props) {
   return (
-    <div className="md:w-2/5 bg-[var(--hey-black)] flex flex-col justify-start md:justify-center px-6 py-8 md:px-10 md:py-12 gap-5 border-r border-white/10">
+    <div className="w-full bg-[var(--hey-black)] flex flex-col justify-start px-6 py-8 gap-5 border-r border-white/10">
       <img src={reserveTextSvg} alt="Reserve" style={{ width: '100%', height: 'auto', display: 'block' }} />
 
       {venueError && !venue && (
@@ -60,11 +59,6 @@ export function VenuePicker({ venue, venueError, barSection, onVenueSelect, onBa
             <div className={`w-4 h-4 rounded-full border-2 border-black self-end transition-all duration-200 ${venue === "dining" ? "bg-black" : "bg-transparent"}`} />
           </div>
         </button>
-      </div>
-
-      {/* HAND GLASS DIVIDER */}
-      <div className="block absolute left-[40%] top-0 translate-x-0 z-10 flex items-start justify-center" style={{ pointerEvents: 'none' }}>
-        <img src={handGlassSvg} alt="" className="hidden md:block w-auto" style={{ height: 'clamp(150px, 20vw, 300px)' }} />
       </div>
     </div>
   );

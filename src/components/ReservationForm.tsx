@@ -1,5 +1,3 @@
-import handGlass1Svg from '../assets/heyou/hand glass1.svg'
-
 const TIMES = [
   "11:30am",
   "12:00pm","12:30pm","01:00pm","01:30pm","02:00pm","02:30pm","03:00pm","03:30pm",
@@ -25,10 +23,10 @@ interface Props {
 
 export function ReservationForm({ name, setName, email, setEmail, phone, setPhone, guests, setGuests, date, setDate, time, setTime, occasion, setOccasion, notes, setNotes, allFilled, saving, error, onSubmit }: Props) {
   return (
-    <div className="md:w-3/5 bg-[var(--hey-red)] flex flex-col justify-start md:justify-center px-6 py-8 md:px-10 md:py-12">
+    <div className="w-full bg-[var(--hey-red)] flex flex-col justify-start px-6 py-8">
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap');`}</style>
       <form onSubmit={onSubmit} className="space-y-4 w-full max-w-lg mx-auto">
-        <h2 className="text-[var(--hey-cream)] text-2xl md:text-3xl mb-2" style={{ fontFamily: "'Londrina Solid', cursive" }}>Your Details</h2>
+        <h2 className="text-[var(--hey-cream)] text-2xl mb-2" style={{ fontFamily: "'Londrina Solid', cursive" }}>Your Details</h2>
 
         <div className="grid grid-cols-2 gap-3">
           <Field label="Name" required>
@@ -90,19 +88,14 @@ export function ReservationForm({ name, setName, email, setEmail, phone, setPhon
           </div>
         )}
 
-        <div className="relative">
-          <div className="pr-0 space-y-3">
-            <button type="submit" disabled={saving}
-              className="w-full bg-[var(--hey-yellow)] text-black px-8 py-4 rounded-full text-lg hover:bg-[var(--hey-cream)] transition-all duration-300 shadow-[6px_6px_0_#000] border-2 border-black disabled:opacity-60 hover:-translate-y-0.5 transform"
-              style={{ fontFamily: "'Londrina Solid', cursive" }}>
-              {saving ? "SAVING…" : "CONFIRM RESERVATION"}
-            </button>
-            <p className="text-xs text-[var(--hey-cream)]/60"><span className="text-[var(--hey-cream)]">*</span> Required fields</p>
-            {error && <p className="text-center text-[var(--hey-yellow)] font-bold text-sm">{error}</p>}
-          </div>
-          <div className="absolute -right-80 top-30 bottom-0 flex items-center" style={{ pointerEvents: 'none' }}>
-            <img src={handGlass1Svg} alt="" style={{ height: 'clamp(300px, 40vw, 600px)', width: 'auto', marginRight: 'clamp(-20px, -2vw, -40px)', marginTop: 'clamp(-200px, -25vw, -400px)' }} />
-          </div>
+        <div className="space-y-3">
+          <button type="submit" disabled={saving}
+            className="w-full bg-[var(--hey-yellow)] text-black px-8 py-4 rounded-full text-lg hover:bg-[var(--hey-cream)] transition-all duration-300 shadow-[6px_6px_0_#000] border-2 border-black disabled:opacity-60 hover:-translate-y-0.5 transform"
+            style={{ fontFamily: "'Londrina Solid', cursive" }}>
+            {saving ? "SAVING…" : "CONFIRM RESERVATION"}
+          </button>
+          <p className="text-xs text-[var(--hey-cream)]/60"><span className="text-[var(--hey-cream)]">*</span> Required fields</p>
+          {error && <p className="text-center text-[var(--hey-yellow)] font-bold text-sm">{error}</p>}
         </div>
 
       </form>
@@ -113,7 +106,7 @@ export function ReservationForm({ name, setName, email, setEmail, phone, setPhon
 function Field({ label, children, required = false }: { label: string; children: React.ReactNode; required?: boolean }) {
   return (
     <label className="block">
-      <span className="block text-xs md:text-sm text-[var(--hey-yellow)] mb-1" style={{ fontFamily: "'Londrina Solid', cursive" }}>
+      <span className="block text-xs text-[var(--hey-yellow)] mb-1" style={{ fontFamily: "'Londrina Solid', cursive" }}>
         {label}{required && <span className="text-[var(--hey-cream)] ml-0.5">*</span>}
       </span>
       {children}

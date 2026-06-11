@@ -64,7 +64,6 @@ function Reserve() {
     setSaving(false);
     if (err) { setError(err.message || "Could not save. Please try again."); return; }
 
-    // SEND EMAIL
     try {
       console.log("Sending email...");
       const payload = { name, email, phone, venue, guests, date, time, occasion, notes, bar_section: venue === "bar" ? barSection : null };
@@ -107,7 +106,7 @@ function Reserve() {
   return (
     <main className="min-h-screen overflow-x-hidden flex flex-col pb-16 md:pb-0">
       <Header active="/reserve" />
-      <div className="flex flex-col md:flex-row flex-1 relative">
+      <div className="flex flex-col flex-1 relative">
         <VenuePicker
           venue={venue} venueError={venueError} barSection={barSection}
           onVenueSelect={(v) => { setVenue(v); setVenueError(false); }}
