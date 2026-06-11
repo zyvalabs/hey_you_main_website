@@ -15,7 +15,7 @@ export function Header({ active }: { active: string }) {
     <>
       <header className="relative z-30 flex items-center bg-[var(--hey-red)] sticky top-0 border-b border-white/10" style={{ minHeight: '52px' }}>
         {/* LEFT — desktop nav */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-bold uppercase tracking-widest px-10" style={{ fontFamily: "'Londrina Solid', sans-serif" }}>
+        <nav className="hidden desktop:flex items-center gap-6 text-sm font-bold uppercase tracking-widest px-10" style={{ fontFamily: "'Londrina Solid', sans-serif" }}>
           {navLinks.map((l) =>
             <Link key={l.label} to={l.href as "/"}
               className={`transition-colors duration-200 hover:-translate-y-0.5 transform inline-block ${active === l.href ? 'text-[var(--hey-yellow)]' : 'text-[var(--hey-cream)] hover:text-[var(--hey-yellow)]'}`}>
@@ -37,23 +37,23 @@ export function Header({ active }: { active: string }) {
         </div>
 
         {/* RIGHT — hamburger desktop, spacer mobile */}
-        <div className="ml-auto px-4 md:px-10 flex items-center">
+        <div className="ml-auto px-4 desktop:px-10 flex items-center">
           <button
             aria-label="menu"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="hidden md:flex flex-col gap-1.5 p-2 group z-40 relative"
+            className="hidden desktop:flex flex-col gap-1.5 p-2 group z-40 relative"
           >
             <span className={`block h-0.5 w-6 bg-[var(--hey-cream)] transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : 'group-hover:w-4'}`} />
             <span className={`block h-0.5 w-6 bg-[var(--hey-cream)] transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
             <span className={`block h-0.5 w-6 bg-[var(--hey-cream)] transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : 'group-hover:w-4'}`} />
           </button>
           {/* mobile spacer to balance logo centering */}
-          <div className="md:hidden w-8" />
+          <div className="desktop:hidden w-8" />
         </div>
       </header>
 
       {/* DESKTOP MENU OVERLAY */}
-      <div className={`fixed inset-0 z-20 bg-[var(--hey-black)]/95 backdrop-blur-md hidden md:flex flex-col items-center justify-center gap-10 transition-all duration-500 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`fixed inset-0 z-20 bg-[var(--hey-black)]/95 backdrop-blur-md hidden desktop:flex flex-col items-center justify-center gap-10 transition-all duration-500 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         {navLinks.map((l, i) =>
           <Link key={l.label} to={l.href as "/"} onClick={() => setMenuOpen(false)}
             className={`font-display text-5xl transition-all duration-200 hover:scale-110 transform ${active === l.href ? 'text-[var(--hey-yellow)]' : 'text-[var(--hey-cream)] hover:text-[var(--hey-yellow)]'}`}
@@ -67,7 +67,7 @@ export function Header({ active }: { active: string }) {
 export function BottomNav() {
   const location = useLocation();
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[var(--hey-black)] border-t border-white/10 flex items-center justify-around px-2 py-1.5">
+    <nav className="desktop:hidden fixed bottom-0 left-0 right-0 z-50 bg-[var(--hey-black)] border-t border-white/10 flex items-center justify-around px-2 py-1.5">
       <Link to="/home" className={`flex flex-col items-center gap-0.5 px-3 py-1 rounded-xl transition-all duration-200 ${location.pathname === '/home' ? 'text-[var(--hey-yellow)]' : 'text-[var(--hey-cream)]/60'}`}>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
