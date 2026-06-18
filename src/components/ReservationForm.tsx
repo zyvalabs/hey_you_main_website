@@ -1,48 +1,18 @@
 import type { ChangeEvent, FormEvent } from "react";
+import handGlassSvg from "../assets/heyou/hand glass.svg";
 import handGlass1Svg from "../assets/heyou/hand glass1.svg";
 
 const TIMES = [
-  "11:30am",
-  "12:00pm",
-  "12:30pm",
-  "01:00pm",
-  "01:30pm",
-  "02:00pm",
-  "02:30pm",
-  "03:00pm",
-  "03:30pm",
-  "04:00pm",
-  "04:30pm",
-  "05:00pm",
-  "05:30pm",
-  "06:00pm",
-  "06:30pm",
-  "07:00pm",
-  "07:30pm",
-  "08:00pm",
-  "08:30pm",
-  "09:00pm",
-  "09:30pm",
-  "10:00pm",
-  "10:30pm",
-  "11:00pm",
+  "11:30am", "12:00pm", "12:30pm", "01:00pm", "01:30pm", "02:00pm",
+  "02:30pm", "03:00pm", "03:30pm", "04:00pm", "04:30pm", "05:00pm",
+  "05:30pm", "06:00pm", "06:30pm", "07:00pm", "07:30pm", "08:00pm",
+  "08:30pm", "09:00pm", "09:30pm", "10:00pm", "10:30pm", "11:00pm",
   "11:30pm",
 ];
 
 const GUESTS = [
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9+",
-  "Group of 10+",
-  "Group of 25+",
-  "Corporate Party",
-  "Party Group",
+  "1", "2", "3", "4", "5", "6", "7", "8", "9+",
+  "Group of 10+", "Group of 25+", "Corporate Party", "Party Group",
 ];
 
 type Props = {
@@ -93,10 +63,25 @@ export function ReservationForm({
   const today = new Date().toISOString().split("T")[0];
 
   return (
-    <div className="w-full md:w-3/5 bg-[var(--hey-red)] flex justify-center px-5 py-8 md:px-10 md:py-12">
+    <div className="relative w-full md:w-3/5 overflow-hidden bg-[var(--hey-red)] flex justify-center px-5 py-8 md:px-10 md:py-12 lg:px-16 xl:px-24 2xl:px-32">
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap');`}</style>
 
-      <form onSubmit={onSubmit} className="w-full max-w-xl space-y-4">
+      {/* LEFT hand — pinned to the seam (left-0), size + bleed per screen */}
+      <div
+        className="pointer-events-none absolute left-0 top-6 z-30 hidden
+          lg:block lg:w-[130px] lg:-translate-x-3
+          xl:w-[170px] xl:-translate-x-5
+          2xl:w-[210px] 2xl:-translate-x-7"
+      >
+        <img src={handGlassSvg} alt="" className="block h-auto w-full" />
+      </div>
+
+      {/* Form: narrower on laptop (lg:max-w-md) so the hands clear it;
+          full width again from xl up where there's room. */}
+      <form
+        onSubmit={onSubmit}
+        className="relative z-20 w-full max-w-xl lg:max-w-md xl:max-w-xl space-y-4"
+      >
         <h2
           className="mb-2 text-2xl md:text-3xl text-[var(--hey-cream)]"
           style={{ fontFamily: "'Londrina Solid', cursive" }}
@@ -218,33 +203,37 @@ export function ReservationForm({
           </div>
         )}
 
-        <div className="relative">
-          <div className="space-y-3">
-            <button
-              type="submit"
-              disabled={saving}
-              className="w-full rounded-full border-2 border-black bg-[var(--hey-yellow)] px-8 py-4 text-base md:text-lg text-black shadow-[6px_6px_0_#000] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--hey-cream)] disabled:opacity-60"
-              style={{ fontFamily: "'Londrina Solid', cursive" }}
-            >
-              {saving ? "SAVING…" : "CONFIRM RESERVATION"}
-            </button>
+        <div className="space-y-3">
+          <button
+            type="submit"
+            disabled={saving}
+            className="w-full rounded-full border-2 border-black bg-[var(--hey-yellow)] px-8 py-4 text-base md:text-lg text-black shadow-[6px_6px_0_#000] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--hey-cream)] disabled:opacity-60"
+            style={{ fontFamily: "'Londrina Solid', cursive" }}
+          >
+            {saving ? "SAVING…" : "CONFIRM RESERVATION"}
+          </button>
 
-            <p className="text-xs text-[var(--hey-cream)]/60">
-              <span className="text-[var(--hey-cream)]">*</span> Required fields
+          <p className="text-xs text-[var(--hey-cream)]/60">
+            <span className="text-[var(--hey-cream)]">*</span> Required fields
+          </p>
+
+          {error && (
+            <p className="text-center text-sm font-bold text-[var(--hey-yellow)]">
+              {error}
             </p>
-
-            {error && (
-              <p className="text-center text-sm font-bold text-[var(--hey-yellow)]">
-                {error}
-              </p>
-            )}
-          </div>
-
-          <div className="pointer-events-none absolute right-[-300px] top-1/2 hidden -translate-y-1/2 xl:flex">
-            <img src={handGlass1Svg} alt="" className="h-[520px] w-auto" />
-          </div>
+          )}
         </div>
       </form>
+
+      {/* RIGHT hand — pinned to bottom-right (right-0 bottom-0), size + bleed per screen */}
+      <div
+        className="pointer-events-none absolute bottom-0 right-0 z-10 hidden
+          lg:block lg:w-[150px] lg:translate-x-3 lg:-mb-4
+          xl:w-[200px] xl:translate-x-6 xl:-mb-6
+          2xl:w-[250px] 2xl:translate-x-10 2xl:-mb-8"
+      >
+        <img src={handGlass1Svg} alt="" className="block h-auto w-full" />
+      </div>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import reserveTextSvg from "../assets/heyou/reserve text.svg";
 import heyouBarSvg from "../assets/heyou/heyyou bar.svg";
 import heyouDiningSvg from "../assets/heyou/heyyou dining.svg";
-import handGlassSvg from "../assets/heyou/hand glass.svg";
 
 type Venue = "bar" | "dining";
 type BarSection = "indoor" | "outdoor";
@@ -114,11 +113,6 @@ export function VenuePicker({
             </div>
           </button>
         </div>
-      </div>
-
-      {/* Hand-glass divider on the right, only on large screens */}
-      <div className="pointer-events-none absolute -right-53 top-8 hidden lg:flex">
-        <img src={handGlassSvg} alt="" className="h-[280px] w-auto" />
       </div>
     </div>
   );
