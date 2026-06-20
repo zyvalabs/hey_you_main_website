@@ -7,6 +7,12 @@ import { VenuePicker } from "../components/VenuePicker";
 import { ReservationForm } from "../components/ReservationForm";
 import { ReservationConfirmation } from "../components/ReservationConfirmation";
 
+declare global {
+  interface Window {
+    dataLayer: Record<string, unknown>[];
+  }
+}
+
 export const Route = createFileRoute("/reservation")({
 validateSearch: (search: Record<string, unknown>) => ({
   venue: (search.venue as string) || undefined,
@@ -83,6 +89,19 @@ function Reserve() {
     if (err) {
       setError(err.message || "Could not save. Please try again.");
       return;
+    }
+
+    // GTM: reservation conversion event
+    if (typeof window !== "undefined") {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "reservation_confirmed",
+        venue,
+        guests,
+        reservation_date: date,
+        reservation_time: time,
+        bar_section: venue === "bar" ? barSection : null,
+      });
     }
 
     try {
