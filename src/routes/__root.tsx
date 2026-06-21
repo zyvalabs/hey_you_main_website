@@ -36,10 +36,10 @@ function NotFoundComponent() {
     </div>
   );
 }
-
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
+
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
@@ -50,9 +50,11 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           This page didn't load
         </h1>
+
         <p className="mt-2 text-sm text-muted-foreground">
           Something went wrong on our end. You can try refreshing or head back home.
         </p>
+
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
@@ -63,6 +65,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           >
             Try again
           </button>
+
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
@@ -80,19 +83,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Heyou" },
-      { name: "description", content: "Heyou. Come for one round. Stay for dinner." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Heyou" },
-      { property: "og:description", content: "Heyou. Come for one round. Stay for dinner." },
+      { title: "Heyou MG Road | Drinks, Dinner & Tables Near Trinity Metro" },
+      {
+        name: "description",
+        content:
+          "Heyou is a drinks-led bar and restaurant on MG Road, near Trinity Metro. Come for one round, stay for dinner. Reserve a table online.",
+      },
+      { name: "author", content: "Heyou" },
+      { property: "og:title", content: "Heyou MG Road | Drinks, Dinner & Tables Near Trinity Metro" },
+      {
+        property: "og:description",
+        content:
+          "Heyou is a drinks-led bar and restaurant on MG Road, near Trinity Metro. Come for one round, stay for dinner. Reserve a table online.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://www.heyouletsgo.com/" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Heyou" },
+      { name: "twitter:site", content: "@heyou" },
+      { name: "twitter:title", content: "Heyou MG Road | Drinks, Dinner & Tables Near Trinity Metro" },
       {
         name: "twitter:description",
         content:
-          "Heyou. Show up. Stay a while.For the kind of plan that changes as the evening goes on",
+          "Heyou is a drinks-led bar and restaurant on MG Road, near Trinity Metro. Come for one round, stay for dinner. Reserve a table online.",
       },
       {
         property: "og:image",
@@ -106,6 +118,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     links: [
+      { rel: "canonical", href: "https://www.heyouletsgo.com/" },
       {
         rel: "preconnect",
         href: "https://fonts.googleapis.com",
