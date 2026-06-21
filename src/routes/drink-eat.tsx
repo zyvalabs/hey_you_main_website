@@ -26,19 +26,20 @@ function DrinkEat() {
       <img src={drinkEatStaySvg} alt="Drink Eat Stay" className="w-full h-auto block" />
 
       {/* GREEN + BLUE */}
-{/* GREEN + BLUE */}
-<div className="flex flex-col md:flex-row md:items-stretch">
-  <div className="w-full md:w-[60%]"><img src={greenSvg} alt="Green" className="w-full h-auto block" /></div>
-  <div className="w-full md:w-[40%]"><img src={blueSvg} alt="Blue" className="w-full h-full object-cover block" /></div>
-</div>
-{/* TONGUE1 + BAR SIDE */}
-<div className="flex flex-col md:flex-row md:items-stretch">
-  <div className="flex-1"><img src={tongue1Svg} alt="Tongue" className="w-full h-full object-cover block" /></div>
-  <div className="flex-1"><img src={barSideSvg} alt="Bar Side" className="w-full h-full object-cover block" /></div>
-</div>
-<Link to="/reserve" className="block">
-  <img src={reserveTableBtnSvg} alt="Reserve Table" className="w-full h-auto block" />
-</Link>
+      <div className="flex flex-col md:flex-row md:items-stretch">
+        <div className="w-full md:w-[60%]"><img src={greenSvg} alt="Green" className="w-full h-auto block" /></div>
+        <div className="w-full md:w-[40%]"><img src={blueSvg} alt="Blue" className="w-full h-full object-cover block" /></div>
+      </div>
+
+      {/* TONGUE1 + BAR SIDE */}
+      <div className="flex flex-col md:flex-row md:items-stretch">
+        <div className="flex-1"><img src={tongue1Svg} alt="Tongue" className="w-full h-full object-cover block" /></div>
+        <div className="flex-1"><img src={barSideSvg} alt="Bar Side" className="w-full h-full object-cover block" /></div>
+      </div>
+
+      <Link to="/reservation" className="block">
+        <img src={reserveTableBtnSvg} alt="Reserve Table" className="w-full h-auto block" />
+      </Link>
 
       <Footer />
       <BottomNav />
