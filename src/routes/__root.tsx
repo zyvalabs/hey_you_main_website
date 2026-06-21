@@ -212,7 +212,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         {/* End Google Tag Manager */}
 
-        {/* Google Ads (gtag.js) */}
+        {/* Google tag (gtag.js) — Google Ads + GA4 */}
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-18253214019"
@@ -222,10 +222,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'AW-18253214019');`,
+gtag('config', 'AW-18253214019');
+gtag('config', 'G-W31PBN965C');`,
           }}
         />
-        {/* End Google Ads */}
+        {/* End Google tag */}
 
         {/* LocalBusiness / Restaurant schema */}
         <script
