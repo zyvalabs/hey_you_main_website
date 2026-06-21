@@ -36,6 +36,7 @@ function NotFoundComponent() {
     </div>
   );
 }
+
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
@@ -77,6 +78,53 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     </div>
   );
 }
+
+const restaurantSchema = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: "Heyou",
+  description:
+    "Heyou is a drinks-led bar and restaurant on MG Road, near Trinity Metro. Come for one round, stay for dinner.",
+  url: "https://www.heyouletsgo.com/",
+  telephone: "+918904085005",
+  servesCuisine: "Bar",
+  priceRange: "₹400–600",
+  image:
+    "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7dcc6ad8-095d-416b-a254-8119d8a5d3af/id-preview-0bc88aa6--e05f475d-2e34-4b31-8ef4-a8a40d255a73.lovable.app-1780262258883.png",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress:
+      "Ground Floor, No. 18, Ramanashree Arcade, Mahatma Gandhi Rd, Craig Park Layout, Ashok Nagar",
+    addressLocality: "Bengaluru",
+    addressRegion: "Karnataka",
+    postalCode: "560001",
+    addressCountry: "IN",
+  },
+geo: {
+    "@type": "GeoCoordinates",
+    latitude: 12.972404275579388,
+    longitude: 77.61832329814547,
+  },
+  hasMap: "https://maps.google.com/?q=Heyou+MG+Road+Bengaluru",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "12:00",
+      closes: "01:00",
+    },
+  ],
+  acceptsReservations: "https://www.heyouletsgo.com/reservation",
+  sameAs: ["https://www.instagram.com/heyou.letsgo"],
+};
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
@@ -179,6 +227,13 @@ gtag('config', 'AW-17796465899');`,
           }}
         />
         {/* End Google Ads */}
+
+        {/* LocalBusiness / Restaurant schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantSchema) }}
+        />
+        {/* End schema */}
 
         <HeadContent />
       </head>
