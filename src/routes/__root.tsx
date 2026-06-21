@@ -36,7 +36,6 @@ function NotFoundComponent() {
     </div>
   );
 }
-
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
@@ -100,12 +99,12 @@ const restaurantSchema = {
     postalCode: "560001",
     addressCountry: "IN",
   },
-geo: {
+  geo: {
     "@type": "GeoCoordinates",
     latitude: 12.972404275579388,
     longitude: 77.61832329814547,
   },
-  hasMap: "https://maps.google.com/?q=Heyou+MG+Road+Bengaluru",
+  hasMap: "https://maps.app.goo.gl/jy6RyiFYTaArSK1g8",
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
@@ -216,14 +215,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {/* Google Ads (gtag.js) */}
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17796465899"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18253214019"
         />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'AW-17796465899');`,
+gtag('config', 'AW-18253214019');`,
           }}
         />
         {/* End Google Ads */}
