@@ -44,8 +44,8 @@ export function Footer() {
               </svg>
               <div className="flex flex-col text-left">
                 <span className="text-[10px] text-[var(--hey-cream)]/60">Call us</span>
-                <span className="text-xs md:text-sm text-[var(--hey-yellow)]">080 4725 0000</span>
-                  <span className="text-xs md:text-sm text-[var(--hey-yellow)]">089 0408 5005</span>
+                <a href="tel:+918047250000" className="text-xs md:text-sm text-[var(--hey-yellow)] hover:underline">080 4725 0000</a>
+                <a href="tel:+918904085005" className="text-xs md:text-sm text-[var(--hey-yellow)] hover:underline">089 0408 5005</a>
               </div>
             </div>
 
