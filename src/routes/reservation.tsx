@@ -91,11 +91,13 @@ function Reserve() {
       return;
     }
 
-    // GTM: reservation conversion event
+    // GTM: reservation conversion event (fires only on successful submit)
     if (typeof window !== "undefined") {
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
-        event: "reservation_confirmed",
+        event: "heyou_reservation_submit_success",
+        form_name: "Heyou Reservation",
+        page_path: window.location.pathname,
         venue,
         guests,
         reservation_date: date,
