@@ -25,6 +25,9 @@ validateSearch: (search: Record<string, unknown>) => ({
         content: "Book a table at Heyou Bar or Heyou Dining, Bangalore.",
       },
     ],
+    links: [
+      { rel: "canonical", href: "https://www.heyouletsgo.com/reservation" },
+    ],
   }),
   component: Reserve,
 });

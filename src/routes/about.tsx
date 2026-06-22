@@ -14,11 +14,15 @@ import heyouDiningSvg from "../assets/heyou/mobile/dining@2x.png";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "Heyou — Your new favourite bar" },
+      { title: "Heyou MG Road | Drinks, Dinner & Tables Near Trinity Metro" },
       {
         name: "description",
-        content: "Bar-first downstairs, table-led upstairs. Bangalore.",
+        content:
+          "Heyou is a drinks-led bar and restaurant on MG Road, near Trinity Metro. Come for one round, stay for dinner. Reserve a table online.",
       },
+    ],
+    links: [
+      { rel: "canonical", href: "https://www.heyouletsgo.com/" },
     ],
   }),
   component: About,
