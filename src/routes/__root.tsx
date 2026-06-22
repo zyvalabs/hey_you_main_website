@@ -85,7 +85,7 @@ const restaurantSchema = {
   description:
     "Heyou is a drinks-led bar and restaurant on MG Road, near Trinity Metro. Come for one round, stay for dinner.",
   url: "https://www.heyouletsgo.com/",
-  telephone: "+918904085005",
+telephone: "+918047250000",
   servesCuisine: "Bar",
   priceRange: "₹400–600",
   image:
