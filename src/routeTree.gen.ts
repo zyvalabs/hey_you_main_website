@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ReserveRouteImport } from './routes/reserve'
 import { Route as ReservationRouteImport } from './routes/reservation'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as FooterRouteImport } from './routes/footer'
@@ -19,11 +18,6 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
-const ReserveRoute = ReserveRouteImport.update({
-  id: '/reserve',
-  path: '/reserve',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ReservationRoute = ReservationRouteImport.update({
   id: '/reservation',
   path: '/reservation',
@@ -74,7 +68,6 @@ export interface FileRoutesByFullPath {
   '/footer': typeof FooterRoute
   '/home': typeof HomeRoute
   '/reservation': typeof ReservationRoute
-  '/reserve': typeof ReserveRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -85,7 +78,6 @@ export interface FileRoutesByTo {
   '/footer': typeof FooterRoute
   '/home': typeof HomeRoute
   '/reservation': typeof ReservationRoute
-  '/reserve': typeof ReserveRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -97,7 +89,6 @@ export interface FileRoutesById {
   '/footer': typeof FooterRoute
   '/home': typeof HomeRoute
   '/reservation': typeof ReservationRoute
-  '/reserve': typeof ReserveRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -110,7 +101,6 @@ export interface FileRouteTypes {
     | '/footer'
     | '/home'
     | '/reservation'
-    | '/reserve'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -121,7 +111,6 @@ export interface FileRouteTypes {
     | '/footer'
     | '/home'
     | '/reservation'
-    | '/reserve'
   id:
     | '__root__'
     | '/'
@@ -132,7 +121,6 @@ export interface FileRouteTypes {
     | '/footer'
     | '/home'
     | '/reservation'
-    | '/reserve'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -144,18 +132,10 @@ export interface RootRouteChildren {
   FooterRoute: typeof FooterRoute
   HomeRoute: typeof HomeRoute
   ReservationRoute: typeof ReservationRoute
-  ReserveRoute: typeof ReserveRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/reserve': {
-      id: '/reserve'
-      path: '/reserve'
-      fullPath: '/reserve'
-      preLoaderRoute: typeof ReserveRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/reservation': {
       id: '/reservation'
       path: '/reservation'
@@ -224,7 +204,6 @@ const rootRouteChildren: RootRouteChildren = {
   FooterRoute: FooterRoute,
   HomeRoute: HomeRoute,
   ReservationRoute: ReservationRoute,
-  ReserveRoute: ReserveRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
