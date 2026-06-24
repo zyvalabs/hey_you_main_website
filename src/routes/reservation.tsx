@@ -1,5 +1,5 @@
 import { createFileRoute, useSearch } from "@tanstack/react-router";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Header1 as Header, BottomNav1 as BottomNav } from "@/components/Header1";
 import { Footer } from "@/components/Footer";
@@ -10,6 +10,13 @@ import { ReservationConfirmation } from "../components/ReservationConfirmation";
 declare global {
   interface Window {
     dataLayer: Record<string, unknown>[];
+  }
+}
+
+function pushEvent(data: Record<string, unknown>) {
+  if (typeof window !== "undefined") {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(data);
   }
 }
 
@@ -50,6 +57,27 @@ function Reserve() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [venueError, setVenueError] = useState(false);
+
+  // Fires once when the reservation page loads
+  useEffect(() => {
+    pushEvent({
+      event: "reservation_page_view",
+      page_path: window.location.pathname,
+    });
+  }, []);
+
+  // Tracks whether form_start has already fired (only fire once)
+  const formStartFired = useRef(false);
+  function handleFormStart() {
+    if (!formStartFired.current) {
+      formStartFired.current = true;
+      pushEvent({
+        event: "reservation_form_start",
+        form_name: "Heyou Reservation",
+        page_path: window.location.pathname,
+      });
+    }
+  }
 
   const allFilled = useMemo(() => {
     return (
@@ -95,19 +123,16 @@ function Reserve() {
     }
 
     // GTM: reservation conversion event (fires only on successful submit)
-    if (typeof window !== "undefined") {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "heyou_reservation_submit_success",
-        form_name: "Heyou Reservation",
-        page_path: window.location.pathname,
-        venue,
-        guests,
-        reservation_date: date,
-        reservation_time: time,
-        bar_section: venue === "bar" ? barSection : null,
-      });
-    }
+    pushEvent({
+      event: "heyou_reservation_submit_success",
+      form_name: "Heyou Reservation",
+      page_path: window.location.pathname,
+      venue,
+      guests,
+      reservation_date: date,
+      reservation_time: time,
+      bar_section: venue === "bar" ? barSection : null,
+    });
 
     try {
       const payload = {
@@ -177,7 +202,7 @@ function Reserve() {
     <main className="min-h-screen overflow-x-hidden flex flex-col pb-16 md:pb-0">
       <Header active="/reservation" />
 
-      <section className="flex flex-col md:flex-row flex-1">
+      <section className="flex flex-col md:flex-row flex-1" onFocusCapture={handleFormStart}>
         <VenuePicker
           venue={venue}
           venueError={venueError}

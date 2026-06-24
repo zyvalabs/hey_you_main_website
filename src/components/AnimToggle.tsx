@@ -3,7 +3,7 @@ export function AnimToggle() {
     if (typeof window !== "undefined") {
       (window as any).dataLayer = (window as any).dataLayer || [];
       (window as any).dataLayer.push({
-        event: "heyou_whatsapp_click",
+   event: "whatsapp_click",
         link_url: "https://wa.me/919108167707",
         page_path: window.location.pathname,
       });
