@@ -21,7 +21,7 @@ function trackEvent(eventName: string, params: Record<string, unknown> = {}) {
   window.dataLayer.push({ event: eventName, ...params });
   // direct GA4 hit (fires the collect request)
   if (typeof window.gtag === "function") {
-    window.gtag("event", eventName, params);
+window.gtag("event", eventName, { ...params, send_to: "G-W31PBN965C" });
   }
 }
 
@@ -137,7 +137,7 @@ function Reserve() {
       bar_section: venue === "bar" ? barSection : null,
     };
     trackEvent("reservation_submit_success", successParams);
-    trackEvent("heyou_reservation_submit_success", successParams);
+    // trackEvent("heyou_reservation_submit_success", successParams);
 
     try {
       const payload = {
