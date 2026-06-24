@@ -2,11 +2,12 @@ export function AnimToggle() {
   const handleClick = () => {
     if (typeof window !== "undefined") {
       (window as any).dataLayer = (window as any).dataLayer || [];
-      (window as any).dataLayer.push({
-   event: "whatsapp_click",
-        link_url: "https://wa.me/919108167707",
-        page_path: window.location.pathname,
-      });
+if (typeof (window as any).gtag === "function") {
+        (window as any).gtag("event", "whatsapp_click", {
+          link_url: "https://wa.me/919108167707",
+          page_path: window.location.pathname,
+        });
+      }
     }
   };
 

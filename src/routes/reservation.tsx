@@ -10,13 +10,18 @@ import { ReservationConfirmation } from "../components/ReservationConfirmation";
 declare global {
   interface Window {
     dataLayer: Record<string, unknown>[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
-function pushEvent(data: Record<string, unknown>) {
-  if (typeof window !== "undefined") {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(data);
+function trackEvent(eventName: string, params: Record<string, unknown> = {}) {
+  if (typeof window === "undefined") return;
+  // dataLayer push (for GTM)
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: eventName, ...params });
+  // direct GA4 hit (fires the collect request)
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, params);
   }
 }
 
@@ -60,19 +65,17 @@ function Reserve() {
 
   // Fires once when the reservation page loads
   useEffect(() => {
-    pushEvent({
-      event: "reservation_page_view",
+    trackEvent("reservation_page_view", {
       page_path: window.location.pathname,
     });
   }, []);
 
-  // Tracks whether form_start has already fired (only fire once)
+  // form_start fires once on first interaction
   const formStartFired = useRef(false);
   function handleFormStart() {
     if (!formStartFired.current) {
       formStartFired.current = true;
-      pushEvent({
-        event: "reservation_form_start",
+      trackEvent("reservation_form_start", {
         form_name: "Heyou Reservation",
         page_path: window.location.pathname,
       });
@@ -122,9 +125,9 @@ function Reserve() {
       return;
     }
 
-    // GTM: reservation conversion event (fires only on successful submit)
-    pushEvent({
-      event: "heyou_reservation_submit_success",
+    // Fires only on successful save. Renamed to reservation_submit_success.
+    // Also keeps the legacy name so the existing Ads conversion keeps working.
+    const successParams = {
       form_name: "Heyou Reservation",
       page_path: window.location.pathname,
       venue,
@@ -132,7 +135,9 @@ function Reserve() {
       reservation_date: date,
       reservation_time: time,
       bar_section: venue === "bar" ? barSection : null,
-    });
+    };
+    trackEvent("reservation_submit_success", successParams);
+    trackEvent("heyou_reservation_submit_success", successParams);
 
     try {
       const payload = {
