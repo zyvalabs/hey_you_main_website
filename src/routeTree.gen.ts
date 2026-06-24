@@ -10,7 +10,6 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ReservationRouteImport } from './routes/reservation'
-import { Route as HomeRouteImport } from './routes/home'
 import { Route as DrinkEatRouteImport } from './routes/drink-eat'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
@@ -19,11 +18,6 @@ import { Route as IndexRouteImport } from './routes/index'
 const ReservationRoute = ReservationRouteImport.update({
   id: '/reservation',
   path: '/reservation',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HomeRoute = HomeRouteImport.update({
-  id: '/home',
-  path: '/home',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DrinkEatRoute = DrinkEatRouteImport.update({
@@ -52,7 +46,6 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/drink-eat': typeof DrinkEatRoute
-  '/home': typeof HomeRoute
   '/reservation': typeof ReservationRoute
 }
 export interface FileRoutesByTo {
@@ -60,7 +53,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/drink-eat': typeof DrinkEatRoute
-  '/home': typeof HomeRoute
   '/reservation': typeof ReservationRoute
 }
 export interface FileRoutesById {
@@ -69,22 +61,14 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRoute
   '/drink-eat': typeof DrinkEatRoute
-  '/home': typeof HomeRoute
   '/reservation': typeof ReservationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/admin' | '/drink-eat' | '/home' | '/reservation'
+  fullPaths: '/' | '/about' | '/admin' | '/drink-eat' | '/reservation'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/admin' | '/drink-eat' | '/home' | '/reservation'
-  id:
-    | '__root__'
-    | '/'
-    | '/about'
-    | '/admin'
-    | '/drink-eat'
-    | '/home'
-    | '/reservation'
+  to: '/' | '/about' | '/admin' | '/drink-eat' | '/reservation'
+  id: '__root__' | '/' | '/about' | '/admin' | '/drink-eat' | '/reservation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -92,7 +76,6 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRoute
   DrinkEatRoute: typeof DrinkEatRoute
-  HomeRoute: typeof HomeRoute
   ReservationRoute: typeof ReservationRoute
 }
 
@@ -103,13 +86,6 @@ declare module '@tanstack/react-router' {
       path: '/reservation'
       fullPath: '/reservation'
       preLoaderRoute: typeof ReservationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/home': {
-      id: '/home'
-      path: '/home'
-      fullPath: '/home'
-      preLoaderRoute: typeof HomeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/drink-eat': {
@@ -148,7 +124,6 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdminRoute: AdminRoute,
   DrinkEatRoute: DrinkEatRoute,
-  HomeRoute: HomeRoute,
   ReservationRoute: ReservationRoute,
 }
 export const routeTree = rootRouteImport

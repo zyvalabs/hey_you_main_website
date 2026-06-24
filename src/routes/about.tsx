@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Header1 as Header, BottomNav1 as BottomNav } from "@/components/Header1";
+import { Header, BottomNav } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 import starSvg from "../assets/heyou/mobile/star.svg";

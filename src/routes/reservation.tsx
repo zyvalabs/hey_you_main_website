@@ -1,7 +1,7 @@
 import { createFileRoute, useSearch } from "@tanstack/react-router";
 import { useState, useMemo, useEffect, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Header1 as Header, BottomNav1 as BottomNav } from "@/components/Header1";
+import { Header, BottomNav } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { VenuePicker } from "../components/VenuePicker";
 import { ReservationForm } from "../components/ReservationForm";
