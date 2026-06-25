@@ -16,19 +16,20 @@ declare global {
 
 function trackEvent(eventName: string, params: Record<string, unknown> = {}) {
   if (typeof window === "undefined") return;
-  // dataLayer push (for GTM)
+  console.log("[track]", eventName, params);
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ event: eventName, ...params });
-  // direct GA4 hit (fires the collect request)
   if (typeof window.gtag === "function") {
-window.gtag("event", eventName, { ...params, send_to: "G-W31PBN965C" });
+    window.gtag("event", eventName, { ...params, send_to: ["G-W31PBN965C", "AW-18253214019"] });
+  } else {
+    console.log("[track] gtag NOT available for", eventName);
   }
 }
 
 export const Route = createFileRoute("/reservation")({
-validateSearch: (search: Record<string, unknown>) => ({
-  venue: (search.venue as string) || undefined,
-}),
+  validateSearch: (search: Record<string, unknown>) => ({
+    venue: (search.venue as string) || undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Reserve a Table — Heyou" },
@@ -63,14 +64,10 @@ function Reserve() {
   const [error, setError] = useState<string | null>(null);
   const [venueError, setVenueError] = useState(false);
 
-  // Fires once when the reservation page loads
   useEffect(() => {
-    trackEvent("reservation_page_view", {
-      page_path: window.location.pathname,
-    });
+    trackEvent("reservation_page_view", { page_path: window.location.pathname });
   }, []);
 
-  // form_start fires once on first interaction
   const formStartFired = useRef(false);
   function handleFormStart() {
     if (!formStartFired.current) {
@@ -121,38 +118,19 @@ function Reserve() {
     setSaving(false);
 
     if (err) {
+      console.log("[booking] FAILED - insert error, no success event:", err.message);
       setError(err.message || "Could not save. Please try again.");
       return;
     }
 
-    // Fires only on successful save. Renamed to reservation_submit_success.
-    // Also keeps the legacy name so the existing Ads conversion keeps working.
-    const successParams = {
-      form_name: "Heyou Reservation",
-      page_path: window.location.pathname,
-      venue,
-      guests,
-      reservation_date: date,
-      reservation_time: time,
-      bar_section: venue === "bar" ? barSection : null,
-    };
-    trackEvent("reservation_submit_success", successParams);
-    // trackEvent("heyou_reservation_submit_success", successParams);
+    console.log("[booking] insert OK, sending confirmation email...");
 
+    // Send confirmation email (non-blocking for the success event)
     try {
       const payload = {
-        name,
-        email,
-        phone,
-        venue,
-        guests,
-        date,
-        time,
-        occasion,
-        notes,
+        name, email, phone, venue, guests, date, time, occasion, notes,
         bar_section: venue === "bar" ? barSection : null,
       };
-
       await fetch(
         "https://mtwvsobgsxvjmoqjgpkr.supabase.co/functions/v1/send-reservation-email",
         {
@@ -165,7 +143,21 @@ function Reserve() {
           body: JSON.stringify(payload),
         }
       );
-    } catch {}
+    } catch (emailErr) {
+      console.log("[booking] email send failed (booking still valid):", emailErr);
+    }
+
+    // Booking confirmed: show the YOU'RE BOOKED screen AND fire success event here only.
+    console.log("[booking] CONFIRMED - showing confirmation + firing reservation_submit_success");
+    trackEvent("reservation_submit_success", {
+      form_name: "Heyou Reservation",
+      page_path: window.location.pathname,
+      venue,
+      guests,
+      reservation_date: date,
+      reservation_time: time,
+      bar_section: venue === "bar" ? barSection : null,
+    });
 
     setSubmitted(true);
     if (typeof window !== "undefined") {
