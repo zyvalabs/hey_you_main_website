@@ -158,7 +158,12 @@ function Reserve() {
       reservation_time: time,
       bar_section: venue === "bar" ? barSection : null,
     });
-
+// Fire the specific Google Ads conversion for booking success
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "conversion", {
+        send_to: "AW-18253214019/MXEiCKf3g8ccEMPi5_9D",
+      });
+    }
     setSubmitted(true);
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
